@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dnhtuul752ebp"
+path="res://.godot/imported/GUI Money.skel-2d4f33fd6abf6538783d214f69812e97.spskel"
+
+[deps]
+
+source_file="res://Assets/Animations/Raw/GUI Money.skel"
+dest_files=["res://.godot/imported/GUI Money.skel-2d4f33fd6abf6538783d214f69812e97.spskel"]
+
+[params]
+

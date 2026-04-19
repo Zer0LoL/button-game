@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cgcevrt5sjgbj"
+path="res://.godot/imported/NPC v1.skel-900f55317db92106705c328debced650.spskel"
+
+[deps]
+
+source_file="res://Assets/Animations/Raw/NPC v1.skel"
+dest_files=["res://.godot/imported/NPC v1.skel-900f55317db92106705c328debced650.spskel"]
+
+[params]
+

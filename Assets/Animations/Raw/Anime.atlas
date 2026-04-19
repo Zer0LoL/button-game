@@ -1,0 +1,43 @@
+Anime.png
+size:583,268
+filter:Linear,Linear
+pma:true
+Assets/NPC/bear
+bounds:217,35,98,51
+Assets/NPC/bg eye 1
+bounds:547,24,20,30
+rotate:90
+Assets/NPC/bg eye 2
+bounds:547,1,21,27
+rotate:90
+Assets/NPC/body
+bounds:137,7,79,78
+rotate:90
+Assets/NPC/cigar
+bounds:1,1,42,15
+Assets/NPC/eye1
+bounds:45,3,13,20
+rotate:90
+Assets/NPC/eye2
+bounds:67,4,12,19
+rotate:90
+Assets/NPC/hat
+bounds:429,17,116,89
+Assets/NPC/leg1
+bounds:217,8,24,25
+Assets/NPC/leg2
+bounds:547,46,24,26
+rotate:90
+butotn fg
+bounds:137,153,290,114
+button bg
+bounds:137,88,290,63
+button down
+bounds:1,18,249,134
+rotate:90
+money icon bg
+bounds:429,108,159,146
+rotate:90
+money icon eye
+bounds:547,72,34,35
+rotate:90
