@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://y7c8uxp8eowa" path="res://Scripts/the_button.gd" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://jik47s74mf6p" path="res://Scripts/game_manager.gd" id="1_kln2b"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bcys8yuggfs6g" path="res://Assets/Animations/Raw/Button_Data.tres" id="1_r150o"]
+[ext_resource type="Script" uid="uid://roloc33o2p0u" path="res://Scripts/main_camera.gd" id="2_rgh2o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r150o"]
 radius = 52.50836
@@ -13,6 +14,7 @@ script = ExtResource("1_kln2b")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=356290286]
 anchor_mode = 0
+script = ExtResource("2_rgh2o")
 
 [node name="GameWorld" type="Node2D" parent="." unique_id=1029073775]
 y_sort_enabled = true
