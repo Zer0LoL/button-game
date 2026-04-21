@@ -1,43 +1,49 @@
 Anime.png
-size:583,268
+size:1475,268
 filter:Linear,Linear
 pma:true
 Assets/NPC/bear
-bounds:217,35,98,51
+bounds:1423,7,98,51
+rotate:90
 Assets/NPC/bg eye 1
-bounds:547,24,20,30
+bounds:986,8,20,30
 rotate:90
 Assets/NPC/bg eye 2
-bounds:547,1,21,27
+bounds:930,70,21,27
 rotate:90
 Assets/NPC/body
-bounds:137,7,79,78
-rotate:90
+bounds:1342,27,79,78
 Assets/NPC/cigar
-bounds:1,1,42,15
+bounds:1018,13,42,15
 Assets/NPC/eye1
-bounds:45,3,13,20
-rotate:90
+bounds:1062,8,13,20
 Assets/NPC/eye2
-bounds:67,4,12,19
-rotate:90
+bounds:1077,100,12,19
 Assets/NPC/hat
-bounds:429,17,116,89
+bounds:959,30,116,89
 Assets/NPC/leg1
-bounds:217,8,24,25
-Assets/NPC/leg2
-bounds:547,46,24,26
+bounds:959,4,24,25
 rotate:90
+Assets/NPC/leg2
+bounds:930,93,24,26
+K
+bounds:1,1,266,347
+rotate:90
+R
+bounds:667,69,198,261
+rotate:90
+W
+bounds:350,3,315,264
 butotn fg
-bounds:137,153,290,114
+bounds:1091,153,290,114
 button bg
-bounds:137,88,290,63
+bounds:667,4,290,63
 button down
-bounds:1,18,249,134
+bounds:1091,17,249,134
+inc
+bounds:1383,107,160,70
 rotate:90
 money icon bg
-bounds:429,108,159,146
-rotate:90
+bounds:930,121,159,146
 money icon eye
-bounds:547,72,34,35
-rotate:90
+bounds:1342,116,34,35
