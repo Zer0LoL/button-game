@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dq7o6ro8tcvmy"]
+
+[ext_resource type="Texture2D" uid="uid://cw0ctgynmg2pf" path="res://Assets/Art/workers gui icon.png" id="1_giiwn"]
+[ext_resource type="Script" uid="uid://cxqt42r52qi5s" path="res://Scripts/economy_manager.gd" id="1_ptj8y"]
+[ext_resource type="FontFile" uid="uid://dtwhb8ypb4b0j" path="res://Assets/Fonts/Fredoka/Fredoka-SemiBold.ttf" id="2_nscqy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ptj8y"]
+
+[node name="UiInterface" type="Control" unique_id=651169644]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptj8y")
+
+[node name="WorkersGuiIcon" type="Sprite2D" parent="." unique_id=978698139]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(99.875, 87.87501)
+scale = Vector2(1.3563827, 1.3470148)
+texture = ExtResource("1_giiwn")
+
+[node name="WorkersCounter" type="RichTextLabel" parent="." unique_id=367769694]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 58.000004
+offset_right = 246.0
+offset_bottom = 110.993484
+scale = Vector2(1, 0.9812528)
+theme_override_colors/default_color = Color(0.17254902, 0.15294118, 0.14117648, 1)
+theme_override_fonts/normal_font = ExtResource("2_nscqy")
+theme_override_font_sizes/normal_font_size = 48
+text = "6/10"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="MoneyIcon" type="Sprite2D" parent="." unique_id=1326238086]
+position = Vector2(101.00001, 195.00002)
+scale = Vector2(45.1, 60.14)
+texture = SubResource("CanvasTexture_ptj8y")
+
+[node name="MoneyCounter" type="RichTextLabel" parent="." unique_id=1587917889]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 171.0
+offset_right = 246.0
+offset_bottom = 223.99348
+scale = Vector2(1, 0.9812528)
+theme_override_colors/default_color = Color(0.17254902, 0.15294118, 0.14117648, 1)
+theme_override_fonts/normal_font = ExtResource("2_nscqy")
+theme_override_font_sizes/normal_font_size = 48
+text = "$$$"
+scroll_active = false
+vertical_alignment = 1
