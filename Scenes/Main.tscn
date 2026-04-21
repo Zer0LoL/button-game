@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://jik47s74mf6p" path="res://Scripts/game_manager.gd" id="1_kln2b"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bcys8yuggfs6g" path="res://Assets/Animations/Raw/Button_Data.tres" id="1_r150o"]
 [ext_resource type="Script" uid="uid://roloc33o2p0u" path="res://Scripts/main_camera.gd" id="2_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://dq7o6ro8tcvmy" path="res://Scenes/UI_Interface.tscn" id="5_pbw6q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r150o"]
 radius = 52.50836
@@ -49,6 +50,8 @@ theme_override_colors/font_color = Color(0.890136, 0.36301348, 0.20717081, 1)
 theme_override_font_sizes/font_size = 150
 text = "Krow inc."
 horizontal_alignment = 1
+
+[node name="UiInterface" parent="UI_Layer" unique_id=651169644 instance=ExtResource("5_pbw6q")]
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=2065670779]
 layer = -1

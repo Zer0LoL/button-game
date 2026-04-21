@@ -4,6 +4,7 @@ extends Node2D
 @onready var main_camera = $MainCamera
 @onready var title_label = $UI_Layer/Title
 @onready var the_button = $GameWorld/TheButton 
+@onready var hud = $UI_Layer/UiInterface
 
 var worker_scene = preload("res://Scenes/Worker.tscn")
 
@@ -44,9 +45,9 @@ func button_clicked():
 			the_button.unlock_button()
 
 func start_alignment_phase():
-	
 	print("El jugador ahora debe arrastrar a los trabajadores en fila.")
-
+	hud.show()
+	hud.workers = workers_count
 func spawn_worker():
 	var new_worker = worker_scene.instantiate()
 	var spawn_pos = Vector2.ZERO
