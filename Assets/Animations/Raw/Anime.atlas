@@ -1,31 +1,29 @@
 Anime.png
-size:1475,268
+size:1503,268
 filter:Linear,Linear
 pma:true
 Assets/NPC/bear
-bounds:1423,7,98,51
-rotate:90
+bounds:959,13,98,51
 Assets/NPC/bg eye 1
-bounds:986,8,20,30
-rotate:90
+bounds:1059,5,20,30
 Assets/NPC/bg eye 2
-bounds:930,70,21,27
-rotate:90
+bounds:1059,37,21,27
 Assets/NPC/body
-bounds:1342,27,79,78
+bounds:1342,1,79,78
 Assets/NPC/cigar
-bounds:1018,13,42,15
+bounds:1423,64,42,15
 Assets/NPC/eye1
-bounds:1062,8,13,20
+bounds:1423,42,13,20
 Assets/NPC/eye2
-bounds:1077,100,12,19
+bounds:1438,43,12,19
 Assets/NPC/hat
-bounds:959,30,116,89
+bounds:1383,178,116,89
+Assets/NPC/hat 2
+bounds:930,73,126,46
 Assets/NPC/leg1
-bounds:959,4,24,25
-rotate:90
+bounds:1058,66,24,25
 Assets/NPC/leg2
-bounds:930,93,24,26
+bounds:1058,93,24,26
 K
 bounds:1,1,266,347
 rotate:90
@@ -41,9 +39,8 @@ bounds:667,4,290,63
 button down
 bounds:1091,17,249,134
 inc
-bounds:1383,107,160,70
-rotate:90
+bounds:1342,81,160,70
 money icon bg
 bounds:930,121,159,146
 money icon eye
-bounds:1342,116,34,35
+bounds:1467,44,34,35
