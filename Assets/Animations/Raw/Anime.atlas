@@ -1,46 +1,58 @@
 Anime.png
-size:1503,268
+size:1508,268
 filter:Linear,Linear
 pma:true
 Assets/NPC/bear
-bounds:959,13,98,51
+bounds:1456,41,98,51
+rotate:90
 Assets/NPC/bg eye 1
-bounds:1059,5,20,30
+bounds:1414,46,20,30
+rotate:90
 Assets/NPC/bg eye 2
-bounds:1059,37,21,27
+bounds:1449,12,21,27
 Assets/NPC/body
-bounds:1342,1,79,78
+bounds:1211,8,79,78
 Assets/NPC/cigar
-bounds:1423,64,42,15
+bounds:867,1,42,15
 Assets/NPC/eye1
-bounds:1423,42,13,20
+bounds:911,3,13,20
+rotate:90
 Assets/NPC/eye2
-bounds:1438,43,12,19
+bounds:933,4,12,19
+rotate:90
 Assets/NPC/hat
-bounds:1383,178,116,89
+bounds:1295,3,116,89
+rotate:90
 Assets/NPC/hat 2
-bounds:930,73,126,46
+bounds:1456,141,126,46
+rotate:90
 Assets/NPC/leg1
-bounds:1058,66,24,25
+bounds:1422,20,24,25
+rotate:90
 Assets/NPC/leg2
-bounds:1058,93,24,26
+bounds:1386,42,24,26
+rotate:90
+Assets/pointer/pointer bg
+bounds:1386,68,64,51
+Assets/pointer/pointer fg mask
+bounds:1003,5,44,34
 K
 bounds:1,1,266,347
 rotate:90
 R
-bounds:667,69,198,261
-rotate:90
+bounds:667,6,198,261
 W
 bounds:350,3,315,264
 butotn fg
-bounds:1091,153,290,114
+bounds:1003,153,290,114
 button bg
-bounds:667,4,290,63
+bounds:1003,88,290,63
 button down
-bounds:1091,17,249,134
+bounds:867,18,249,134
+rotate:90
 inc
-bounds:1342,81,160,70
+bounds:1049,16,160,70
 money icon bg
-bounds:930,121,159,146
+bounds:1295,121,159,146
 money icon eye
-bounds:1467,44,34,35
+bounds:1386,4,34,35
