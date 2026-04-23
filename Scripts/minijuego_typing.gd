@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var type_text: RichTextLabel = $TypeText
+@onready var progress_bar = $BackgroundLayer/UiProgressBarInterface
 
 var intro_text: String = "TYPE WITH ME."
 
@@ -101,16 +102,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func handle_success() -> void:
 	is_waiting = true
-	
-	# Verde oscuro
+	if progress_bar:
+		progress_bar.add_progress(6.0)
 	type_text.text = "[color=" + color_untyped + "]" + current_sentence + "[/color]"
 	await get_tree().create_timer(0.1).timeout
 	
-	# Verde claro
 	type_text.text = "[color=" + color_typed + "]" + current_sentence + "[/color]"
 	await get_tree().create_timer(0.05).timeout
 	
-	# Verde oscuro
 	type_text.text = "[color=" + color_untyped + "]" + current_sentence + "[/color]"
 	await get_tree().create_timer(0.05).timeout
 	
@@ -122,10 +121,11 @@ func handle_success() -> void:
 	
 func handle_mistake() -> void:
 	is_waiting = true
+	
+	if progress_bar:
+		progress_bar.lose_progress(8.0) 
+		
 	type_text.text = "[color=#ff0000]" + current_sentence + "[/color]"
 	
-	# 0.5s to update to new sentence
 	await get_tree().create_timer(0.5).timeout 
-	
-	# New sentence
 	pick_new_sentence()
