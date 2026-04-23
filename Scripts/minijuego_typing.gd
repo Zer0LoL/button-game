@@ -2,18 +2,22 @@ extends Node2D
 
 @onready var type_text: RichTextLabel = $TypeText
 
+var intro_text: String = "TYPE WITH ME."
+
 var sentences: Array[String] = [
-	"TYPE WITH ME.",
 	"WORK IS GOOD.",
 	"I LOVE WORKING.",
-	"MONEY, MONEY, MONEY.",
-	"MAXIMIZE GROWTH."
+	"MONEY MONEY MONEY.",
+	"MAXIMIZE GROWTH.",
+	"BOSS IS THE BEST.",
+	"LOVING THE WORK.",
+	"ONLY THE BEST."
 ]
 
 var current_sentence: String = ""
 var current_char_index: int = 0
 # In case of failure
-var is_waiting: bool = false
+var is_waiting: bool = true # start with true for prep text
 
 #colors
 var color_typed: String = "#39ff14" #verde brillante
@@ -23,6 +27,36 @@ var color_untyped: String = "#1b5e20" #verde oscuro
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	type_text.bbcode_enabled = true
+	play_intro()
+	
+func play_intro() -> void:
+	# clean TypeText
+	type_text.text = ""
+	type_text.modulate.a = 1.0 
+	
+	# Typewriter effect for intro
+	for i in range(intro_text.length()):
+		type_text.text += intro_text[i]
+		
+		if intro_text[i] != " ":
+			SFXManager.play_random_type_sound()
+			
+		# Pause between characters
+		await get_tree().create_timer(0.1).timeout 
+		
+	# Pause to read
+	await get_tree().create_timer(1.2).timeout
+	
+	# Fadeout
+	var tween = create_tween()
+	# animate opacity
+	tween.tween_property(type_text, "modulate:a", 0.0, 0.5)
+	
+	# wait opacity 0
+	await tween.finished
+	
+	# restore opacity
+	type_text.modulate.a = 1.0 
 	pick_new_sentence()
 
 func pick_new_sentence() -> void:
@@ -54,7 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 			
 		var expected_char: String = current_sentence[current_char_index]
-		
+		SFXManager.play_random_type_sound()
 		# mayus & minus check
 		if typed_char.to_lower() == expected_char.to_lower():
 			current_char_index += 1
