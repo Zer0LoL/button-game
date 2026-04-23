@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ptj8y")
 
 [node name="WorkersGuiIcon" type="Sprite2D" parent="." unique_id=978698139]
@@ -29,6 +30,7 @@ offset_top = 58.000004
 offset_right = 246.0
 offset_bottom = 110.993484
 scale = Vector2(1, 0.9812528)
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.17254902, 0.15294118, 0.14117648, 1)
 theme_override_fonts/normal_font = ExtResource("2_nscqy")
 theme_override_font_sizes/normal_font_size = 48
@@ -48,6 +50,7 @@ offset_top = 171.0
 offset_right = 246.0
 offset_bottom = 223.99348
 scale = Vector2(1, 0.9812528)
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.17254902, 0.15294118, 0.14117648, 1)
 theme_override_fonts/normal_font = ExtResource("2_nscqy")
 theme_override_font_sizes/normal_font_size = 48

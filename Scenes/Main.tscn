@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://jik47s74mf6p" path="res://Scripts/game_manager.gd" id="1_kln2b"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bcys8yuggfs6g" path="res://Assets/Animations/Raw/Button_Data.tres" id="1_r150o"]
 [ext_resource type="Script" uid="uid://roloc33o2p0u" path="res://Scripts/main_camera.gd" id="2_rgh2o"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://g227aux261xo" path="res://Assets/Animations/Raw/TitleLetter_Data.tres" id="5_jw32o"]
 [ext_resource type="PackedScene" uid="uid://dq7o6ro8tcvmy" path="res://Scenes/UI_Interface.tscn" id="5_pbw6q"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://cwwjwgcfpevs6" path="res://Assets/Animations/Raw/TitleGear_Data.tres" id="6_50glp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r150o"]
 radius = 52.50836
@@ -23,6 +25,7 @@ y_sort_enabled = true
 [node name="OfficeRoom" type="Node2D" parent="GameWorld" unique_id=1885247778]
 
 [node name="TheButton" type="Area2D" parent="GameWorld" unique_id=2093356256]
+z_index = -1
 position = Vector2(965, 720)
 script = ExtResource("1_idj7w")
 
@@ -41,15 +44,62 @@ preview_time = 0.0
 
 [node name="UI_Layer" type="CanvasLayer" parent="." unique_id=195847160]
 
-[node name="Title" type="Label" parent="UI_Layer" unique_id=786629159]
+[node name="AnimatedTitle" type="HBoxContainer" parent="UI_Layer" unique_id=704141710]
 z_index = 1
-offset_top = 117.0
-offset_right = 1920.0
-offset_bottom = 497.0
-theme_override_colors/font_color = Color(0.890136, 0.36301348, 0.20717081, 1)
-theme_override_font_sizes/font_size = 150
-text = "Krow inc."
-horizontal_alignment = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="SpineSprite" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=1637885484]
+skeleton_data_res = ExtResource("5_jw32o")
+preview_skin = "K"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
+position = Vector2(-458, 336)
+
+[node name="SpineSprite2" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=1791711201]
+skeleton_data_res = ExtResource("5_jw32o")
+preview_skin = "R"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
+position = Vector2(-222, 420)
+
+[node name="SpineSprite3" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=379638416]
+skeleton_data_res = ExtResource("6_50glp")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
+position = Vector2(32.999992, 372)
+rotation = 0.51962495
+scale = Vector2(1.525, 1.525)
+
+[node name="SpineSprite4" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=231369240]
+skeleton_data_res = ExtResource("5_jw32o")
+preview_skin = "W"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
+position = Vector2(322, 398)
+
+[node name="SpineSprite5" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=1543339527]
+skeleton_data_res = ExtResource("5_jw32o")
+preview_skin = "inc"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(303, 584)
 
 [node name="UiInterface" parent="UI_Layer" unique_id=651169644 instance=ExtResource("5_pbw6q")]
 

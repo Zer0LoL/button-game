@@ -23,6 +23,7 @@ initial_velocity_min = 10.0
 initial_velocity_max = 20.0
 gravity = Vector3(0, -20, 0)
 scale_curve = SubResource("CurveTexture_77nw7")
+color = Color(1, 1, 1, 0.47058824)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r72bl"]
 size = Vector2(76, 114)
@@ -32,7 +33,7 @@ script = ExtResource("1_77nw7")
 
 [node name="WorkerVisual" type="SpineSprite" parent="." unique_id=1299692824]
 skeleton_data_res = ExtResource("1_r72bl")
-preview_skin = "Default"
+preview_skin = "default"
 preview_animation = "-- Empty --"
 preview_frame = true
 preview_time = 0.0
@@ -47,6 +48,7 @@ scale = Vector2(0.99999994, 1)
 
 [node name="CigarSmoke" type="GPUParticles2D" parent="WorkerVisual/SpineBoneNode" unique_id=1374420043]
 show_behind_parent = true
+position = Vector2(33.149567, -2.305274)
 emitting = false
 texture = ExtResource("3_s0wpu")
 process_material = SubResource("ParticleProcessMaterial_77nw7")
