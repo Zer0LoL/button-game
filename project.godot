@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="Krow Inc."
+run/main_scene="uid://b2qqqafyyk5vx"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://bidx0hial13u2"
 
 [autoload]
 
 WavedashSDK="*uid://dbg2ujud3howm"
+SFXManager="*uid://8a64ojrgts87"
 
 [display]
 
