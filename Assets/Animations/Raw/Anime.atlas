@@ -1,62 +1,65 @@
 Anime.png
-size:1524,268
+size:1804,269
 filter:Linear,Linear
 pma:true
 Assets/NPC/bear
-bounds:1003,7,98,51
-rotate:90
+bounds:1702,217,98,51
 Assets/NPC/bg eye 1
-bounds:1307,2,20,30
+bounds:1537,18,20,30
 Assets/NPC/bg eye 2
-bounds:1329,5,21,27
+bounds:1731,17,21,27
 Assets/NPC/body
-bounds:1227,7,79,78
+bounds:1725,136,79,78
 rotate:90
 Assets/NPC/cigar
 bounds:867,1,42,15
 Assets/NPC/eye1
-bounds:911,3,13,20
+bounds:1702,202,13,20
 rotate:90
 Assets/NPC/eye2
-bounds:933,4,12,19
-rotate:90
+bounds:1791,115,12,19
 Assets/NPC/hat
-bounds:1056,16,116,89
+bounds:1280,9,116,89
 Assets/NPC/hat 2
-bounds:1360,40,126,46
+bounds:1677,70,126,46
+rotate:90
 Assets/NPC/leg1
-bounds:1488,26,24,25
-rotate:90
+bounds:1118,1,24,25
 Assets/NPC/leg2
-bounds:1352,6,24,26
+bounds:1144,2,24,26
+rotate:90
 Assets/OK
-bounds:1307,34,52,51
-rotate:90
+bounds:1677,17,52,51
 Assets/pointer/pointer bg
-bounds:1174,6,64,51
-rotate:90
+bounds:1725,83,64,51
 Assets/pointer/pointer fg mask
-bounds:1174,72,44,34
+bounds:1118,108,44,34
+rotate:90
 K
-bounds:1,1,266,347
+bounds:1,2,266,347
 rotate:90
 R
-bounds:667,6,198,261
+bounds:667,7,198,261
 W
-bounds:350,3,315,264
+bounds:350,4,315,264
 butotn fg
-bounds:1223,153,290,114
+bounds:867,154,290,114
 button bg
-bounds:1223,88,290,63
+bounds:1159,205,290,63
 button down
 bounds:867,18,249,134
+button mask 1
+bounds:1398,8,137,40
+button mask 2
+bounds:1451,198,249,70
+button mask 3
+bounds:1159,100,248,103
+button mask 4
+bounds:1570,39,157,105
 rotate:90
 inc
-bounds:1003,107,160,70
-rotate:90
+bounds:1118,28,160,70
 money icon bg
-bounds:1075,108,159,146
-rotate:90
+bounds:1409,50,159,146
 money icon eye
-bounds:1488,52,34,35
-rotate:90
+bounds:1731,46,34,35
