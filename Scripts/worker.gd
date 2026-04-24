@@ -3,7 +3,10 @@ extends Area2D
 @onready var spine_sprite = $WorkerVisual
 @onready var timer = Timer.new()
 @onready var cigar_smoke = $WorkerVisual/SpineBoneNode/CigarSmoke
+@onready var name_tag = $NameTag
+@onready var name_label = $NameTag/NameLabel
 
+var worker_name: String = "???"
 var is_dragging = false
 var drag_speed = 15.0 
 var target_position = Vector2.ZERO
@@ -16,6 +19,26 @@ func _ready():
 	timer.one_shot = true
 	timer.timeout.connect(_on_timer_timeout)
 	randomize_skin()
+	load_random_name()
+	
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
+
+func load_random_name():
+	var file = FileAccess.open("res://Assets/Meta/names.json", FileAccess.READ)
+	if file:
+		var json = JSON.parse_string(file.get_as_text())
+		if json and json.has("names"):
+			worker_name = json["names"].pick_random()
+			name_label.text = worker_name
+
+func _on_mouse_entered():
+	name_tag.show()
+
+func _on_mouse_exited():
+	name_tag.hide()
+
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and can_be_dragged:
@@ -31,11 +54,27 @@ func _input(event):
 	if is_dragging and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		is_dragging = false
 		
+		var areas = get_overlapping_areas()
+		var snapped = false
 		
-		target_position = global_position 
+		for area in areas:
+			if area.is_in_group("work_zones") and not area.is_occupied:
+				global_position = area.global_position 
+				area.is_occupied = true
+				snapped = true
+				can_be_dragged = false 
+				
+				area.toggle_pointer(false)
+				
+				get_tree().current_scene.check_all_zones()
+				break
+		
+		if not snapped:
+			target_position = global_position 
 		
 		spine_sprite.get_animation_state().set_animation("IDLE", true, 0)
 		_start_idle()
+
 func _process(delta):
 	if is_dragging:
 		var mouse_pos = get_global_mouse_position()

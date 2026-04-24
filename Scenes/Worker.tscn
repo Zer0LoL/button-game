@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ch2l38llbi7l3" path="res://Scripts/worker.gd" id="1_77nw7"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://1fievr8rakct" path="res://Assets/Animations/Raw/NPC_Data.tres" id="1_r72bl"]
+[ext_resource type="Texture2D" uid="uid://cnj71si7y6dst" path="res://Assets/Art/Masks/mask shadow.png" id="2_2jbub"]
 [ext_resource type="Shader" uid="uid://c6xcdpuclxtmi" path="res://Scripts/Worker.gdshader" id="2_vwm8u"]
 [ext_resource type="Texture2D" uid="uid://d0bhxs51dafrk" path="res://Assets/Art/Masks/particle effect cigar.png" id="3_s0wpu"]
+[ext_resource type="Texture2D" uid="uid://b4p0xktio3jn3" path="res://Assets/Art/bg name.png" id="6_fomyb"]
+[ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="7_hbmmw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0wpu"]
 shader = ExtResource("2_vwm8u")
@@ -30,6 +33,11 @@ size = Vector2(76, 114)
 
 [node name="Worker" type="Area2D" unique_id=1795789533]
 script = ExtResource("1_77nw7")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1429346255]
+modulate = Color(0, 0, 0, 0.25882354)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_2jbub")
 
 [node name="WorkerVisual" type="SpineSprite" parent="." unique_id=1299692824]
 skeleton_data_res = ExtResource("1_r72bl")
@@ -59,3 +67,22 @@ shape = SubResource("RectangleShape2D_r72bl")
 
 [node name="DustParticles" type="GPUParticles2D" parent="." unique_id=348474500]
 emitting = false
+
+[node name="NameTag" type="Node2D" parent="." unique_id=933084304]
+visible = false
+
+[node name="NameBG" type="Sprite2D" parent="NameTag" unique_id=242191451]
+position = Vector2(2, -130)
+scale = Vector2(0.89690715, 1)
+texture = ExtResource("6_fomyb")
+
+[node name="NameLabel" type="Label" parent="NameTag" unique_id=252072366]
+offset_left = -73.0
+offset_top = -145.0
+offset_right = 77.0
+offset_bottom = -114.0
+theme_override_colors/font_color = Color(0.95908874, 0.93347335, 0.8657966, 1)
+theme_override_fonts/font = ExtResource("7_hbmmw")
+theme_override_font_sizes/font_size = 27
+horizontal_alignment = 1
+vertical_alignment = 1
