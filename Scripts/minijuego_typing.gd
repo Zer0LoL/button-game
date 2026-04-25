@@ -61,7 +61,14 @@ func play_intro() -> void:
 	pick_new_sentence()
 
 func pick_new_sentence() -> void:
-	current_sentence = sentences.pick_random()
+	var next_sentence: String = current_sentence
+	
+	# El bucle se repite hasta que la nueva oración sea distinta a la actual
+	while next_sentence == current_sentence:
+		next_sentence = sentences.pick_random()
+		
+	# Una vez que tenemos una oración diferente, la asignamos
+	current_sentence = next_sentence
 	current_char_index = 0
 	is_waiting = false
 	update_text_display()

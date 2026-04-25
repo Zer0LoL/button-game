@@ -19,7 +19,7 @@ config/icon="uid://bidx0hial13u2"
 
 WavedashSDK="*uid://dbg2ujud3howm"
 SFXManager="*uid://8a64ojrgts87"
-GameManager="*uid://jik47s74mf6p"
+GlobalData="*uid://btv0uoi844mnu"
 
 [display]
 

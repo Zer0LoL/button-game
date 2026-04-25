@@ -17,16 +17,16 @@ func _ready() -> void:
 	update_ui()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	time_passed += delta
 	if time_passed >= 1.0:
-		money += GameManager.workers_count 
+		money += GlobalData.workers_count # Toma el dato global
 		time_passed -= 1.0
 		update_ui()
 		
 func update_ui() -> void:
-	workers_counter.text = str(GameManager.workers_count) + "/" + str(GameManager.workers_max) 
+	# Muestra el dato global en la interfaz
+	workers_counter.text = str(GlobalData.workers_count) + "/" + str(GlobalData.workers_max) 
 	money_counter.text = "$" + str(money)
 		
 		
