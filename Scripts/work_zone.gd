@@ -18,6 +18,8 @@ func show_zone():
 
 func toggle_pointer(show: bool):
 	if not is_occupied:
-		pointer.visible = show
-		if show:
+		if show and not pointer.visible:
+			pointer.visible = true
 			pointer.get_animation_state().set_animation("IDLE", true, 0)
+		elif not show and pointer.visible:
+			pointer.visible = false

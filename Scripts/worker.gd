@@ -42,17 +42,22 @@ func _on_mouse_exited():
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and can_be_dragged:
-		if event.pressed: # Clic presionado
+		if event.pressed:
 			is_dragging = true
 			is_moving = false
 			timer.stop()
-			
 			spine_sprite.get_animation_state().set_animation("Drag", true, 0)
+			for zone in get_tree().get_nodes_in_group("work_zones"):
+				if not zone.is_occupied:
+					zone.toggle_pointer(true)
 
 
 func _input(event):
 	if is_dragging and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-		is_dragging = false
+		is_dragging = false # ¡Lo soltamos!
+		
+		for zone in get_tree().get_nodes_in_group("work_zones"):
+			zone.toggle_pointer(false)
 		
 		var areas = get_overlapping_areas()
 		var snapped = false
@@ -63,12 +68,11 @@ func _input(event):
 				area.is_occupied = true
 				snapped = true
 				can_be_dragged = false 
-				
-				area.toggle_pointer(false)
-				
+				timer.stop()
+				is_moving = false
 				get_tree().current_scene.check_all_zones()
 				break
-		
+				
 		if not snapped:
 			target_position = global_position 
 		
@@ -80,14 +84,11 @@ func _process(delta):
 		var mouse_pos = get_global_mouse_position()
 		global_position = global_position.lerp(mouse_pos, drag_speed * delta)
 		
-		
 		var velocity = (mouse_pos - global_position).x
 		spine_sprite.rotation = lerp(spine_sprite.rotation, deg_to_rad(velocity * 0.2), 5 * delta)
 		
 	elif is_moving:
-		
 		spine_sprite.rotation = lerp(spine_sprite.rotation, 0.0, 5 * delta)
-		
 		position = position.move_toward(target_position, speed * delta)
 		if position.distance_to(target_position) < 5:
 			is_moving = false
@@ -117,6 +118,7 @@ func _start_idle():
 	timer.start(randf_range(2.0, 5.0))
 
 func _on_timer_timeout():
+	if not can_be_dragged: return
 	var new_x = randf_range(100, 1820)
 	var new_y = randf_range(700, 1000) 
 	

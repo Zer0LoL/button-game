@@ -131,9 +131,18 @@ func check_all_zones():
 
 func start_cinematic_transition():
 	current_state = State.TRANSITION
+	print("¡Todos alineados! Iniciando cinemática...")
+	
+	main_camera.cinematic_offset = main_camera.smoothed_base_offset
+	main_camera.is_cinematic = true
+	
 	var cam_tween = create_tween().set_parallel(true)
-	cam_tween.tween_property(main_camera, "zoom", Vector2(1.5, 1.5), 1.2).set_trans(Tween.TRANS_SINE)
-	cam_tween.tween_property(main_camera, "offset", Vector2(0, 500), 1.2).set_trans(Tween.TRANS_SINE) 
+	
+	cam_tween.tween_property(main_camera, "zoom", Vector2(1.25, 1.25), 1.5).set_trans(Tween.TRANS_SINE)
+	
+	cam_tween.tween_property(main_camera, "cinematic_offset:x", 192.0, 1.5).set_trans(Tween.TRANS_SINE)
+	var bajar_y = main_camera.cinematic_offset.y + 480.0 
+	cam_tween.tween_property(main_camera, "cinematic_offset:y", bajar_y, 1.5).set_trans(Tween.TRANS_SINE)
 	
 	await cam_tween.finished
 	await get_tree().create_timer(0.5).timeout
@@ -167,6 +176,10 @@ func play_ok_and_exit():
 
 func play_tv_transition():
 	var tv = $UI_Layer/TV_Effect
+	tv.custom_minimum_size = Vector2(1920, 1080)
+	tv.size = Vector2(1920, 1080)
+	tv.position = Vector2.ZERO
+	
 	tv.stream = load("res://Assets/Animations/Raw/TV Effect.ogv")
 	tv.show()
 	tv.play()
