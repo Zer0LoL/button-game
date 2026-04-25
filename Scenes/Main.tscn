@@ -12,9 +12,8 @@
 radius = 52.50836
 height = 259.73328
 
-[node name="Main" type="Node2D" unique_id=38016852 node_paths=PackedStringArray("the_button")]
+[node name="Main" type="Node2D" unique_id=38016852]
 script = ExtResource("1_kln2b")
-the_button = NodePath("GameWorld/SpineSprite/TheButton")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=356290286]
 anchor_mode = 0
@@ -25,27 +24,23 @@ y_sort_enabled = true
 
 [node name="OfficeRoom" type="Node2D" parent="GameWorld" unique_id=1885247778]
 
-[node name="SpineSprite" type="SpineSprite" parent="GameWorld" unique_id=1322302930]
+[node name="TheButton" type="Area2D" parent="GameWorld" unique_id=2093356256]
+z_index = -1
+position = Vector2(965, 720)
+script = ExtResource("1_idj7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/TheButton" unique_id=1788259723]
+z_index = 2
+position = Vector2(0, -86.5)
+rotation = 1.596568
+shape = SubResource("CapsuleShape2D_r150o")
+
+[node name="SpineSprite" type="SpineSprite" parent="GameWorld/TheButton" unique_id=1322302930]
 skeleton_data_res = ExtResource("1_r150o")
 preview_skin = "Default"
 preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
-position = Vector2(957, 863)
-
-[node name="TheButton" type="Area2D" parent="GameWorld/SpineSprite" unique_id=2093356256 node_paths=PackedStringArray("spine_sprite")]
-show_behind_parent = true
-z_index = -1
-position = Vector2(8, -143)
-script = ExtResource("1_idj7w")
-spine_sprite = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/SpineSprite/TheButton" unique_id=1788259723]
-show_behind_parent = true
-z_index = 2
-position = Vector2(-5, 57)
-rotation = 1.596568
-shape = SubResource("CapsuleShape2D_r150o")
 
 [node name="UI_Layer" type="CanvasLayer" parent="." unique_id=195847160]
 
@@ -67,7 +62,7 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
-position = Vector2(-504, 606)
+position = Vector2(-458, 336)
 
 [node name="SpineSprite2" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=1791711201]
 skeleton_data_res = ExtResource("5_jw32o")
@@ -76,7 +71,7 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
-position = Vector2(-228, 600)
+position = Vector2(-222, 420)
 
 [node name="SpineSprite3" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=379638416]
 skeleton_data_res = ExtResource("6_50glp")
@@ -85,7 +80,7 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
-position = Vector2(23.999985, 589)
+position = Vector2(32.999992, 372)
 rotation = 0.51962495
 scale = Vector2(1.525, 1.525)
 
@@ -96,7 +91,7 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 modulate = Color(0.6745098, 0.24313726, 0.15294118, 1)
-position = Vector2(343, 616)
+position = Vector2(322, 398)
 
 [node name="SpineSprite5" type="SpineSprite" parent="UI_Layer/AnimatedTitle" unique_id=1543339527]
 skeleton_data_res = ExtResource("5_jw32o")
@@ -104,7 +99,7 @@ preview_skin = "inc"
 preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
-position = Vector2(286, 788)
+position = Vector2(303, 584)
 
 [node name="UiInterface" parent="UI_Layer" unique_id=651169644 instance=ExtResource("5_pbw6q")]
 

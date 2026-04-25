@@ -1,7 +1,6 @@
 extends Area2D
 
-@export var spine_sprite: SpineSprite
-@onready var anime_state: SpineAnimationState = spine_sprite.get_animation_state()
+@onready var spine_sprite = $SpineSprite
 
 var is_hovering = false
 var is_pressed_down = false
@@ -10,7 +9,7 @@ var can_click = true
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	anime_state.set_animation("IDLE Up", true, 0)
+	spine_sprite.get_animation_state().set_animation("IDLE Up", true, 0)
 
 func _process(delta):
 	if is_hovering and can_click:
@@ -27,7 +26,7 @@ func _input_event(viewport, event, shape_idx):
 			can_click = false # Se bloquea
 			
 			
-			var entry = anime_state.set_animation("Touch Down", false, 0)
+			var entry = spine_sprite.get_animation_state().set_animation("Touch Down", false, 0)
 			entry.set_time_scale(2.5) 
 
 func _input(event):
@@ -37,11 +36,13 @@ func _input(event):
 			_release_button()
 
 func _release_button():
-	var entry_up = anime_state.set_animation("Touch Up", false, 0)
+	var anim_state = spine_sprite.get_animation_state()
+	
+	var entry_up = anim_state.set_animation("Touch Up", false, 0)
 	entry_up.set_time_scale(2.5)
 	
 	
-	var entry_idle = anime_state.add_animation("IDLE Up", 0.0, true, 0)
+	var entry_idle = anim_state.add_animation("IDLE Up", 0.0, true, 0)
 	entry_idle.set_time_scale(1.0)
 	
 	var main_node = get_tree().current_scene

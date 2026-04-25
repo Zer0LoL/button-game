@@ -1,21 +1,13 @@
 extends Node2D
 
-const EVENT_ESC: String = "ESC"
-
 enum State { PROLOGUE, ALIGNMENT, TRANSITION, MINIGAME }
 var current_state = State.PROLOGUE
 
 @onready var game_world = $GameWorld
 @onready var main_camera = $MainCamera
 @onready var animated_title = $UI_Layer/AnimatedTitle
-@export var the_button: Area2D
+@onready var the_button = $GameWorld/TheButton 
 @onready var hud = $UI_Layer/UiInterface
-
-
-
-
-
-
 
 var worker_scene = preload("res://Scenes/Worker.tscn")
 var work_zone_scene = preload("res://Scenes/WorkZone.tscn")
@@ -187,8 +179,3 @@ func _process(delta: float) -> void:
 	if animated_title.visible:
 		var gear_o = animated_title.get_child(2)
 		gear_o.rotation += (TAU / 30.0) * delta
-		
-		
-func _input(e: InputEvent):
-	if(e.is_action_pressed(EVENT_ESC)):
-		get_tree().quit()
