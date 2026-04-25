@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://ch2l38llbi7l3" path="res://Scripts/worker.gd" id="1_77nw7"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://1fievr8rakct" path="res://Assets/Animations/Raw/NPC_Data.tres" id="1_r72bl"]
 [ext_resource type="Texture2D" uid="uid://cnj71si7y6dst" path="res://Assets/Art/Masks/mask shadow.png" id="2_2jbub"]
-[ext_resource type="Shader" uid="uid://c6xcdpuclxtmi" path="res://Scripts/Worker.gdshader" id="2_vwm8u"]
+[ext_resource type="Shader" path="res://Scripts/Worker.gdshader" id="2_vwm8u"]
 [ext_resource type="Texture2D" uid="uid://d0bhxs51dafrk" path="res://Assets/Art/Masks/particle effect cigar.png" id="3_s0wpu"]
 [ext_resource type="Texture2D" uid="uid://b4p0xktio3jn3" path="res://Assets/Art/bg name.png" id="6_fomyb"]
 [ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="7_hbmmw"]
+[ext_resource type="Texture2D" uid="uid://11t2qaok4tqi" path="res://Assets/Art/Placeholders/watercolorbasketplaceholder.png" id="8_kfawn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0wpu"]
 shader = ExtResource("2_vwm8u")
@@ -30,6 +31,9 @@ color = Color(1, 1, 1, 0.47058824)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r72bl"]
 size = Vector2(76, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfawn"]
+size = Vector2(304.91803, 103.36066)
 
 [node name="Worker" type="Area2D" unique_id=1795789533]
 script = ExtResource("1_77nw7")
@@ -86,3 +90,15 @@ theme_override_fonts/font = ExtResource("7_hbmmw")
 theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Basket" type="Sprite2D" parent="." unique_id=1169366000]
+modulate = Color(0.78, 0.52624, 0.30419996, 1)
+position = Vector2(8, -109)
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("8_kfawn")
+
+[node name="Area2D" type="Area2D" parent="Basket" unique_id=311518739 groups=["basket"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/Area2D" unique_id=695877337]
+position = Vector2(-16.393442, 58.2377)
+shape = SubResource("RectangleShape2D_kfawn")
