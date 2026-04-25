@@ -39,24 +39,29 @@ func spawn_billete() -> void:
 	nuevo_billete.position = Vector2(random_x, 0)
 	nuevo_billete.rotation_degrees = randf_range(-45.0, 45.0) 
 	
-	# Lógica de posibilidad
 	if randf() < probabilidad_rapido:
-		# Es un billete rápido
 		nuevo_billete.fall_speed = velocidad_rapida
-		# Lo teñimos de un tono rojo
-		nuevo_billete.modulate = Color(1.5, 1.2, 0.5)
+		nuevo_billete.modulate = Color(1.5, 1.2, 0.5) 
+		# ¡Le decimos al billete que es el especial!
+		nuevo_billete.es_rapido = true
 	else:
-		# Es un billete normal
 		nuevo_billete.fall_speed = velocidad_normal
-		nuevo_billete.modulate = Color.WHITE # Color estándar
+		nuevo_billete.modulate = Color.WHITE 
+		nuevo_billete.es_rapido = false
 	
 	nuevo_billete.caught.connect(_on_billete_atrapado)
 	nuevo_billete.missed.connect(_on_billete_fallado)
 	
 	add_child(nuevo_billete)
 
-func _on_billete_atrapado() -> void:
-	progress_bar.add_progress(avance_por_acierto)
+func _on_billete_atrapado(es_rapido_el_billete: bool) -> void:
+	if progress_bar:
+		if es_rapido_el_billete:
+			# Si es el billete dorado rápido, sumamos el doble de progreso
+			progress_bar.add_progress(avance_por_acierto * 2.0)
+		else:
+			# Si es un billete normal, sumamos el progreso estándar
+			progress_bar.add_progress(avance_por_acierto)
 
 func _on_billete_fallado() -> void:
 	if progress_bar:
