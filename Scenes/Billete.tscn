@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpdup5xvbqed1"]
 
-[ext_resource type="Script" uid="uid://c3nc1bfctfwrh" path="res://Scenes/billete.gd" id="1_1l1lc"]
+[ext_resource type="Script" uid="uid://c3nc1bfctfwrh" path="res://Scripts/billete.gd" id="1_1l1lc"]
 [ext_resource type="Texture2D" uid="uid://b2nbt74w4sdyq" path="res://Assets/Animations/Raw/money.png" id="1_ddekv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddekv"]
