@@ -15,6 +15,7 @@ var work_zone_scene = preload("res://Scenes/WorkZone.tscn")
 var workers_count = 0
 var spawn_delay_time = 1.0 
 var cooldown_time = 1.0    
+var workers_max = 4
 
 func _ready():
 	hud.hide() 
@@ -58,11 +59,11 @@ func button_clicked():
 		await get_tree().create_timer(cooldown_time).timeout
 		the_button.unlock_button()
 		
-	elif workers_count < 4:
+	elif workers_count < workers_max:
 		await get_tree().create_timer(spawn_delay_time).timeout
 		spawn_worker()
 		
-		if workers_count == 4:
+		if workers_count == workers_max:
 			print("¡Llegamos a 4! Iniciando fase de alineación.")
 			start_alignment_phase()
 		else:
@@ -74,7 +75,7 @@ func start_alignment_phase():
 	print("El jugador debe arrastrar a los trabajadores a las zonas.")
 	
 
-	for i in range(4):
+	for i in range(workers_max):
 		var new_zone = work_zone_scene.instantiate()
 		# Ajustar la altura (950) y espaciado (384) según se vea mejor
 		new_zone.position = Vector2(384 + (i * 384), 950) 
