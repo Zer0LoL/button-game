@@ -92,9 +92,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Basket" type="Sprite2D" parent="." unique_id=1169366000]
+visible = false
 modulate = Color(0.78, 0.52624, 0.30419996, 1)
-position = Vector2(8, -109)
-scale = Vector2(0.305, 0.305)
+position = Vector2(8, -112)
+scale = Vector2(0.31, 0.31)
 texture = ExtResource("8_kfawn")
 
 [node name="Area2D" type="Area2D" parent="Basket" unique_id=311518739 groups=["basket"]]

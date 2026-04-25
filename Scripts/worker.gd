@@ -2,7 +2,7 @@ extends Area2D
 
 # Interruptor para el minijuego
 @export var is_basket_mode: bool = false 
-
+@onready var basket_area = $Basket/Area2D
 @onready var basket = $Basket
 @onready var spine_sprite = $WorkerVisual
 @onready var timer = Timer.new()
@@ -31,6 +31,8 @@ func _ready():
 	# Si estamos en el minijuego, no conectamos las señales del mouse 
 	if is_basket_mode:
 		basket.show()
+		if basket_area:
+			basket_area.area_entered.connect(_on_basket_area_entered)
 		_play_spine_anim("IDLE")
 		return
 		
@@ -213,3 +215,19 @@ func _on_timer_timeout():
 	spine_sprite.get_animation_state().set_animation("Run/Body", true, 1) 
 	
 	spine_sprite.scale.x = -1 if target_position.x < position.x else 1
+
+func _on_basket_area_entered(area: Area2D) -> void:
+	# Verificamos que lo que entró fue un billete (usando el grupo que creamos antes)
+	if area.is_in_group("billetes"):
+		_bounce_basket()
+
+func _bounce_basket() -> void:
+	# Creamos la animación de rebote
+	var tween = create_tween()
+	
+	# Se aplasta un poco al recibir el impacto
+	tween.tween_property(basket, "scale", Vector2(0.51, 0.11), 0.05)
+	# Rebota hacia arriba
+	tween.tween_property(basket, "scale", Vector2(0.21, 0.41), 0.1)
+	# Vuelve a su tamaño original
+	tween.tween_property(basket, "scale", Vector2(0.31, 0.31), 0.1)

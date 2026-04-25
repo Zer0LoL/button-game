@@ -12,6 +12,10 @@ extends Node2D
 @export var avance_por_acierto: float = 2 # Cuánto sube la barra
 @export var castigo_por_fallo: float = 5 # Cuánto baja la barra
 
+@export var probabilidad_rapido: float = 0.15 # 15% de probabilidad
+@export var velocidad_normal: float = 400.0
+@export var velocidad_rapida: float = 850.0
+
 @onready var timer: Timer = $Timer
 var billetes_atrapados: int = 0 # Contador
 
@@ -35,7 +39,17 @@ func spawn_billete() -> void:
 	nuevo_billete.position = Vector2(random_x, 0)
 	nuevo_billete.rotation_degrees = randf_range(-45.0, 45.0) 
 	
-	# Conectamos las señales del billete al spawner
+	# Lógica de posibilidad
+	if randf() < probabilidad_rapido:
+		# Es un billete rápido
+		nuevo_billete.fall_speed = velocidad_rapida
+		# Lo teñimos de un tono rojo
+		nuevo_billete.modulate = Color(1.5, 1.2, 0.5)
+	else:
+		# Es un billete normal
+		nuevo_billete.fall_speed = velocidad_normal
+		nuevo_billete.modulate = Color.WHITE # Color estándar
+	
 	nuevo_billete.caught.connect(_on_billete_atrapado)
 	nuevo_billete.missed.connect(_on_billete_fallado)
 	
