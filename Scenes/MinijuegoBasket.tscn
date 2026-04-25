@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://yxxdxctu8jkw"]
+
+[ext_resource type="Script" uid="uid://w4bluo3kb7k7" path="res://Scripts/minijuego_basket.gd" id="1_et18x"]
+[ext_resource type="PackedScene" uid="uid://cqc3rgabko8tr" path="res://Scenes/UI_ProgressBarInterface.tscn" id="1_xku0e"]
+[ext_resource type="PackedScene" uid="uid://378kckpv5o2n" path="res://Scenes/Worker.tscn" id="2_plx36"]
+[ext_resource type="Script" uid="uid://ep2whc2eru2m" path="res://Scripts/spawner_billetes.gd" id="3_xtyrt"]
+[ext_resource type="PackedScene" uid="uid://bpdup5xvbqed1" path="res://Scenes/Billete.tscn" id="4_t0y41"]
+
+[node name="MinijuegoBasket" type="Node2D" unique_id=669992422]
+script = ExtResource("1_et18x")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=185922490]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer" unique_id=1396244244]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8901961, 0.827451, 0.6627451, 1)
+
+[node name="UiProgressBarInterface" parent="BackgroundLayer" unique_id=1244246556 instance=ExtResource("1_xku0e")]
+
+[node name="SpawnerBilletes" type="Node2D" parent="." unique_id=213387985 node_paths=PackedStringArray("progress_bar")]
+script = ExtResource("3_xtyrt")
+billete_scene = ExtResource("4_t0y41")
+progress_bar = NodePath("../BackgroundLayer/UiProgressBarInterface")
+
+[node name="Timer" type="Timer" parent="SpawnerBilletes" unique_id=585157795]
+one_shot = true
+
+[node name="Worker" parent="." unique_id=1795789533 instance=ExtResource("2_plx36")]
+position = Vector2(239, 666)
+is_basket_mode = true
+
+[editable path="BackgroundLayer/UiProgressBarInterface"]

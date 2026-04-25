@@ -12,7 +12,6 @@ var current_state = State.PROLOGUE
 var worker_scene = preload("res://Scenes/Worker.tscn")
 var work_zone_scene = preload("res://Scenes/WorkZone.tscn")
 
-var workers_count = 0
 var spawn_delay_time = 1.0 
 var cooldown_time = 1.0    
 
@@ -51,18 +50,18 @@ func _force_skin(spine_node, skin_name):
 func button_clicked():
 	if current_state != State.PROLOGUE: return
 	
-	if workers_count == 0:
+	if GlobalData.workers_count == 0:
 		animated_title.hide()
 		await get_tree().create_timer(2.0).timeout
 		spawn_worker()
 		await get_tree().create_timer(cooldown_time).timeout
 		the_button.unlock_button()
 		
-	elif workers_count < 4:
+	elif GlobalData.workers_count < GlobalData.workers_max:
 		await get_tree().create_timer(spawn_delay_time).timeout
 		spawn_worker()
 		
-		if workers_count == 4:
+		if GlobalData.workers_count == GlobalData.workers_max:
 			print("¡Llegamos a 4! Iniciando fase de alineación.")
 			start_alignment_phase()
 		else:
@@ -73,10 +72,8 @@ func start_alignment_phase():
 	current_state = State.ALIGNMENT
 	print("El jugador debe arrastrar a los trabajadores a las zonas.")
 	
-
-	for i in range(4):
+	for i in range(GlobalData.workers_max):
 		var new_zone = work_zone_scene.instantiate()
-		# Ajustar la altura (950) y espaciado (384) según se vea mejor
 		new_zone.position = Vector2(384 + (i * 384), 950) 
 		game_world.add_child(new_zone)
 		new_zone.show_zone()
@@ -85,7 +82,7 @@ func spawn_worker():
 	var new_worker = worker_scene.instantiate()
 	var spawn_pos = Vector2.ZERO
 	
-	if workers_count == 0:
+	if GlobalData.workers_count == 0:
 		spawn_pos = Vector2(960, -200) 
 	else:
 		var valid_pos = false
@@ -98,7 +95,9 @@ func spawn_worker():
 	new_worker.position = spawn_pos
 	new_worker.add_to_group("workers")
 	game_world.add_child(new_worker)
-	workers_count += 1
+	
+	# Sumamos el trabajador al Autoload
+	GlobalData.workers_count += 1
 	
 	var tween = create_tween()
 	var target_y = randf_range(750, 950) 
@@ -110,7 +109,7 @@ func spawn_worker():
 		tween.parallel().tween_method(func(val): new_worker.get_node("WorkerVisual").material.set_shader_parameter("stretch_amount", val), 30.0, 0.0, 0.2).set_delay(0.2)
 
 func _on_worker_landed(worker):
-	if workers_count == 1:
+	if GlobalData.workers_count == 1:
 		main_camera.apply_shake(20.0) 
 	else:
 		main_camera.apply_shake(2.0)  
@@ -119,14 +118,13 @@ func _on_worker_landed(worker):
 	worker_spine.get_animation_state().set_animation("IDLE", true, 0)
 	worker.enable_interaction()
 
-
 func check_all_zones():
 	var total_occupied = 0
 	for zone in get_tree().get_nodes_in_group("work_zones"):
 		if zone.is_occupied:
 			total_occupied += 1
 			
-	if total_occupied == workers_count:
+	if total_occupied == GlobalData.workers_count:
 		start_cinematic_transition()
 
 func start_cinematic_transition():
@@ -150,7 +148,6 @@ func start_cinematic_transition():
 	play_ok_and_exit()
 
 func play_ok_and_exit():
-
 	for worker in get_tree().get_nodes_in_group("workers"):
 		var ok_anim = SpineSprite.new() 
 		ok_anim.skeleton_data_res = load("res://Assets/Animations/Raw/OK_Data.tres")

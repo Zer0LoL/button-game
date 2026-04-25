@@ -19,6 +19,7 @@ config/icon="uid://bidx0hial13u2"
 
 WavedashSDK="*uid://dbg2ujud3howm"
 SFXManager="*uid://8a64ojrgts87"
+GlobalData="*uid://btv0uoi844mnu"
 
 [display]
 
@@ -28,6 +29,11 @@ window/size/viewport_height=1080
 [dotnet]
 
 project/assembly_name="Button Game"
+
+[global_group]
+
+basket=""
+billetes=""
 
 [physics]
 

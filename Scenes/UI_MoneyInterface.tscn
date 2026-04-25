@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cw0ctgynmg2pf" path="res://Assets/Art/workers gui icon.png" id="1_giiwn"]
 [ext_resource type="Script" uid="uid://cxqt42r52qi5s" path="res://Scripts/economy_manager.gd" id="1_ptj8y"]
 [ext_resource type="FontFile" uid="uid://dtwhb8ypb4b0j" path="res://Assets/Fonts/Fredoka/Fredoka-SemiBold.ttf" id="2_nscqy"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ptj8y"]
+[ext_resource type="FontFile" uid="uid://6viiear7gwt8" path="res://Assets/Fonts/Chewy-Regular.ttf" id="4_gcnyy"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://cfkha74t4c6ak" path="res://Assets/Animations/Raw/TitleGear.tres" id="4_x7gar"]
 
 [node name="UiInterface" type="Control" unique_id=651169644]
 layout_mode = 3
@@ -19,16 +19,16 @@ script = ExtResource("1_ptj8y")
 [node name="WorkersGuiIcon" type="Sprite2D" parent="." unique_id=978698139]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(99.875, 87.87501)
+position = Vector2(168.875, 88.125)
 scale = Vector2(1.3563827, 1.3470148)
 texture = ExtResource("1_giiwn")
 
 [node name="WorkersCounter" type="RichTextLabel" parent="." unique_id=367769694]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 58.000004
-offset_right = 246.0
-offset_bottom = 110.993484
+offset_left = 213.0
+offset_top = 58.24999
+offset_right = 315.0
+offset_bottom = 111.24347
 scale = Vector2(1, 0.9812528)
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.17254902, 0.15294118, 0.14117648, 1)
@@ -38,22 +38,42 @@ text = "6/10"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="MoneyIcon" type="Sprite2D" parent="." unique_id=1326238086]
-position = Vector2(101.00001, 195.00002)
-scale = Vector2(45.1, 60.14)
-texture = SubResource("CanvasTexture_ptj8y")
-
 [node name="MoneyCounter" type="RichTextLabel" parent="." unique_id=1587917889]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 171.0
-offset_right = 246.0
-offset_bottom = 223.99348
+offset_left = 1200.0
+offset_top = 22.000002
+offset_right = 1713.0
+offset_bottom = 212.0
 scale = Vector2(1, 0.9812528)
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.17254902, 0.15294118, 0.14117648, 1)
-theme_override_fonts/normal_font = ExtResource("2_nscqy")
-theme_override_font_sizes/normal_font_size = 48
-text = "$$$"
+theme_override_fonts/normal_font = ExtResource("4_gcnyy")
+theme_override_font_sizes/normal_font_size = 148
+text = "400"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="MoneyIcon" type="SpineSprite" parent="." unique_id=1146228064]
+skeleton_data_res = ExtResource("4_x7gar")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(1811.9999, 111.99997)
+rotation = 0.27576202
+scale = Vector2(1.065, 1.035)
+
+[node name="Promotion" type="RichTextLabel" parent="." unique_id=1133844497]
+layout_mode = 0
+offset_left = 1537.0
+offset_top = 199.0
+offset_right = 1888.0
+offset_bottom = 258.0
+theme_override_colors/default_color = Color(0.77, 0.21816668, 0.107799985, 1)
+theme_override_fonts/normal_font = ExtResource("4_gcnyy")
+theme_override_font_sizes/normal_font_size = 46
+text = "PROMOTION: 100M"
+scroll_active = false
+horizontal_alignment = 2

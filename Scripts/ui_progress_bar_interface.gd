@@ -9,7 +9,7 @@ var current_progress: float = 0.0
 var max_width: float = 0.0 
 
 
-var passive_fill_rate: float = 3.33 
+var passive_fill_rate: float = 3.33
 
 var current_words: Array = []
 var phase: int = 0 
