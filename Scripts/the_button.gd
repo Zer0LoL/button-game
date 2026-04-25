@@ -38,12 +38,11 @@ func _input(event):
 func _release_button():
 	var anim_state = spine_sprite.get_animation_state()
 	
- 
 	var entry_up = anim_state.set_animation("Touch Up", false, 0)
 	entry_up.set_time_scale(2.5)
 	
-
-	var entry_idle = anim_state.add_animation("IDLE Up", true, 0, 0.0)
+	
+	var entry_idle = anim_state.add_animation("IDLE Up", 0.0, true, 0)
 	entry_idle.set_time_scale(1.0)
 	
 	var main_node = get_tree().current_scene

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dq7o6ro8tcvmy"]
+[gd_scene format=3 uid="uid://cdvv3xukghw55"]
 
 [ext_resource type="Texture2D" uid="uid://cw0ctgynmg2pf" path="res://Assets/Art/workers gui icon.png" id="1_giiwn"]
 [ext_resource type="Script" uid="uid://cxqt42r52qi5s" path="res://Scripts/economy_manager.gd" id="1_ptj8y"]

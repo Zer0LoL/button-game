@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://cqc3rgabko8tr"]
 
+[ext_resource type="Script" uid="uid://dp2o7binvqy4m" path="res://Scripts/ui_progress_bar_interface.gd" id="1_tuu4a"]
+[ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="2_tuu4a"]
+
 [node name="UiProgressBarInterface" type="Control" unique_id=1244246556]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tuu4a")
 
 [node name="UIRect" type="ColorRect" parent="." unique_id=294193740]
 z_index = 1
@@ -16,13 +20,87 @@ anchor_top = 0.7222222
 anchor_bottom = 0.7222222
 offset_right = 1920.0
 offset_bottom = 300.0
-color = Color(0.5882353, 0.13333334, 0, 1)
+color = Color(0.5882353, 0.13333334, 0, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" type="ColorRect" parent="." unique_id=1019643324]
+[node name="ProgressBar" type="ColorRect" parent="UIRect" unique_id=1019643324]
 z_index = 1
 layout_mode = 0
-offset_top = 748.0
-offset_right = 1920.0
-offset_bottom = 780.0
-color = Color(0.5882353, 0.13333334, 0, 1)
+offset_top = -32.0
+offset_bottom = 300.0
+color = Color(0.6745098, 0.24313726, 0.15294118, 1)
+
+[node name="WordCenter" type="Control" parent="UIRect" unique_id=61566713]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Word1" type="Label" parent="UIRect/WordCenter" unique_id=2134669814]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -45.5
+offset_right = 41.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 41)
+theme_override_colors/font_color = Color(0.8901961, 0.827451, 0.6627451, 1)
+theme_override_colors/font_outline_color = Color(0.6745098, 0.24313726, 0.15294118, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_tuu4a")
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Word2" type="Label" parent="UIRect/WordCenter" unique_id=138078694]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -45.5
+offset_right = 41.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 41)
+theme_override_colors/font_color = Color(0.8901961, 0.827451, 0.6627451, 1)
+theme_override_colors/font_outline_color = Color(0.6745098, 0.24313726, 0.15294118, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_tuu4a")
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Word3" type="Label" parent="UIRect/WordCenter" unique_id=518186284]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -45.5
+offset_right = 41.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 41)
+theme_override_colors/font_color = Color(0.8901961, 0.827451, 0.6627451, 1)
+theme_override_colors/font_outline_color = Color(0.6745098, 0.24313726, 0.15294118, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_tuu4a")
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+vertical_alignment = 1

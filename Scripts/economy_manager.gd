@@ -1,6 +1,5 @@
-extends Node
-
-var workers: int = 6
+extends Control 
+var workers: int = 0 # ¡Cambiamos esto a 0!
 var money: int = 0
 
 @onready var workers_counter: RichTextLabel = $WorkersCounter
@@ -9,6 +8,7 @@ var money: int = 0
 var time_passed: float = 0.0
 
 func _ready() -> void:
+	hide() 
 	update_ui()
 
 
