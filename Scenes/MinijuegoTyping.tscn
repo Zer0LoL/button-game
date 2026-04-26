@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b2qqqafyyk5vx"]
+
+[ext_resource type="PackedScene" uid="uid://cqc3rgabko8tr" path="res://Scenes/UI_ProgressBarInterface.tscn" id="1_2j123"]
+[ext_resource type="Script" uid="uid://cs8mmpsmgunps" path="res://Scripts/minijuego_typing.gd" id="1_o0ocp"]
+[ext_resource type="Shader" uid="uid://ba2exva6wyayl" path="res://Scripts/MinijuegoTyping.gdshader" id="2_2utpo"]
+[ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="4_o0ocp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wnthd"]
+shader = ExtResource("2_2utpo")
+shader_parameter/intensity = 0.5
+shader_parameter/light = 15.0
+
+[node name="MinijuegoTyping" type="Node2D" unique_id=312765257]
+script = ExtResource("1_o0ocp")
+
+[node name="FiltroMonitor" type="ColorRect" parent="." unique_id=593986059]
+material = SubResource("ShaderMaterial_wnthd")
+offset_right = 1920.0
+offset_bottom = 756.0
+mouse_filter = 2
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1617515455]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer" unique_id=143712741]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8901961, 0.827451, 0.6627451, 1)
+
+[node name="UiProgressBarInterface" parent="BackgroundLayer" unique_id=1244246556 instance=ExtResource("1_2j123")]
+
+[node name="TypeText" type="RichTextLabel" parent="." unique_id=718915833]
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 756.0
+theme_override_colors/default_color = Color(0.195283, 0.51835674, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_o0ocp")
+theme_override_font_sizes/normal_font_size = 130
+text = "TYPE WITH ME."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="BackgroundLayer/UiProgressBarInterface"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c14a0q42h1vfd"]
+
+[ext_resource type="Script" uid="uid://cqncr6vnuokjo" path="res://Scripts/ending.gd" id="1_j7kmc"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://bcys8yuggfs6g" path="res://Assets/Animations/Raw/Button_Data.tres" id="1_sbbak"]
+
+[node name="Ending" type="Node2D" unique_id=1394276193]
+script = ExtResource("1_j7kmc")
+
+[node name="FalseButton" type="SpineSprite" parent="." unique_id=387250619]
+skeleton_data_res = ExtResource("1_sbbak")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(960, 540)

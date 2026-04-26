@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://378kckpv5o2n"]
+
+[ext_resource type="Script" uid="uid://ch2l38llbi7l3" path="res://Scripts/worker.gd" id="1_77nw7"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://1fievr8rakct" path="res://Assets/Animations/Raw/NPC_Data.tres" id="1_r72bl"]
+[ext_resource type="Texture2D" uid="uid://cnj71si7y6dst" path="res://Assets/Art/Masks/mask shadow.png" id="2_2jbub"]
+[ext_resource type="Shader" uid="uid://c6xcdpuclxtmi" path="res://Scripts/Worker.gdshader" id="2_vwm8u"]
+[ext_resource type="Texture2D" uid="uid://d0bhxs51dafrk" path="res://Assets/Art/Masks/particle effect cigar.png" id="3_s0wpu"]
+[ext_resource type="Texture2D" uid="uid://b4p0xktio3jn3" path="res://Assets/Art/bg name.png" id="6_fomyb"]
+[ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="7_hbmmw"]
+[ext_resource type="Texture2D" uid="uid://dhnkp6hq48b20" path="res://Assets/Art/basket.png" id="8_kfawn"]
+[ext_resource type="AudioStream" uid="uid://cc7oqya4door4" path="res://Assets/Audio/sfx walk.wav" id="9_xoi5f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0wpu"]
+shader = ExtResource("2_vwm8u")
+shader_parameter/stretch_amount = 0.0
+
+[sub_resource type="Curve" id="Curve_s0wpu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_77nw7"]
+curve = SubResource("Curve_s0wpu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_77nw7"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, -20, 0)
+scale_curve = SubResource("CurveTexture_77nw7")
+color = Color(1, 1, 1, 0.47058824)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r72bl"]
+size = Vector2(76, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfawn"]
+size = Vector2(304.91803, 103.36066)
+
+[node name="Worker" type="Area2D" unique_id=1795789533]
+script = ExtResource("1_77nw7")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1429346255]
+modulate = Color(0, 0, 0, 0.25882354)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_2jbub")
+
+[node name="WorkerVisual" type="SpineSprite" parent="." unique_id=1299692824]
+skeleton_data_res = ExtResource("1_r72bl")
+preview_skin = "default"
+preview_animation = "-- Empty --"
+preview_frame = true
+preview_time = 0.0
+material = SubResource("ShaderMaterial_s0wpu")
+
+[node name="SpineBoneNode" type="SpineBoneNode" parent="WorkerVisual" unique_id=1616757751]
+bone_name = "cigar"
+show_behind_parent = true
+position = Vector2(9.608847, -28.496199)
+rotation = -0.41597414
+scale = Vector2(0.99999994, 1)
+
+[node name="CigarSmoke" type="GPUParticles2D" parent="WorkerVisual/SpineBoneNode" unique_id=1374420043]
+show_behind_parent = true
+position = Vector2(33.149567, -2.305274)
+emitting = false
+texture = ExtResource("3_s0wpu")
+process_material = SubResource("ParticleProcessMaterial_77nw7")
+
+[node name="ClickHitbox" type="CollisionShape2D" parent="." unique_id=409965395]
+position = Vector2(2, -59)
+shape = SubResource("RectangleShape2D_r72bl")
+
+[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=348474500]
+emitting = false
+
+[node name="NameTag" type="Node2D" parent="." unique_id=933084304]
+visible = false
+
+[node name="NameBG" type="Sprite2D" parent="NameTag" unique_id=242191451]
+position = Vector2(2, -130)
+scale = Vector2(0.89690715, 1)
+texture = ExtResource("6_fomyb")
+
+[node name="NameLabel" type="Label" parent="NameTag" unique_id=252072366]
+offset_left = -73.0
+offset_top = -145.0
+offset_right = 77.0
+offset_bottom = -114.0
+theme_override_colors/font_color = Color(0.95908874, 0.93347335, 0.8657966, 1)
+theme_override_fonts/font = ExtResource("7_hbmmw")
+theme_override_font_sizes/font_size = 27
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Basket" type="Sprite2D" parent="." unique_id=1169366000]
+visible = false
+modulate = Color(0.78, 0.52624, 0.30419996, 1)
+position = Vector2(8, -112)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("8_kfawn")
+
+[node name="Area2D" type="Area2D" parent="Basket" unique_id=311518739 groups=["basket"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/Area2D" unique_id=695877337]
+position = Vector2(-16.393442, 58.2377)
+shape = SubResource("RectangleShape2D_kfawn")
+
+[node name="WalkPlayer" type="AudioStreamPlayer" parent="." unique_id=426565733]
+stream = ExtResource("9_xoi5f")
+volume_db = -2.0

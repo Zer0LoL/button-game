@@ -11,12 +11,16 @@ config_version=5
 [application]
 
 config/name="Krow Inc."
+run/main_scene="uid://bgt3xk6m6fpt2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://bidx0hial13u2"
 
 [autoload]
 
 WavedashSDK="*uid://dbg2ujud3howm"
+SFXManager="*uid://8a64ojrgts87"
+GlobalData="*uid://btv0uoi844mnu"
+MusicManager="*uid://b8y6800uxme2e"
 
 [display]
 
@@ -26,6 +30,12 @@ window/size/viewport_height=1080
 [dotnet]
 
 project/assembly_name="Button Game"
+
+[global_group]
+
+basket=""
+billetes=""
+obstaculos=""
 
 [physics]
 

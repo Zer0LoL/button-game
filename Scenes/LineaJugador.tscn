@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dtwj37rguys34"]
+
+[ext_resource type="Script" uid="uid://brslbfdq4ktjq" path="res://Scripts/linea_jugador.gd" id="1_voj4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voj4k"]
+size = Vector2(20, 13)
+
+[node name="LineaJugador" type="Area2D" unique_id=242914012]
+script = ExtResource("1_voj4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=103197262]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_voj4k")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1316848113]
+default_color = Color(0.6745098, 0.24313726, 0.15294118, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1127896492]
+
+[node name="FlechaVisual" type="Polygon2D" parent="." unique_id=1718107936]
+scale = Vector2(1, 0.5)
+color = Color(0.6745098, 0.24313726, 0.15294118, 1)
