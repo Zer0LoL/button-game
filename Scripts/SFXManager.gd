@@ -53,8 +53,7 @@ func play_button_sound() -> void:
 	play_sound(button_sound)
 
 func play_coin_sound() -> void:
-	# Le damos una variación de pitch chiquita para que si agarras 
-	# muchos billetes seguidos, no suene robótico
+	# Le damos una variación de pitch chiquita para que si agarras muchos billetes seguidos, no suene robótico
 	play_sound(coin_sound, 0.05) 
 
 func play_walk_sound() -> void:
