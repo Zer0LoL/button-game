@@ -23,8 +23,9 @@ func play_bam_sound() -> void:
 
 func play_like_sound() -> void:
 	play_sound(like_sound)
-# Recibe un audio y un nivel opcional de variación de tono
-func play_sound(stream: AudioStream, pitch_variance: float = 0.0) -> void:
+
+# --- MODIFICADO: Ahora recibe el volumen en decibelios (0.0 por defecto) ---
+func play_sound(stream: AudioStream, pitch_variance: float = 0.0, volume: float = 0.0) -> void:
 	if stream == null:
 		return
 		
@@ -34,6 +35,9 @@ func play_sound(stream: AudioStream, pitch_variance: float = 0.0) -> void:
 	if pitch_variance > 0.0:
 		player.pitch_scale = randf_range(1.0 - pitch_variance, 1.0 + pitch_variance)
 		
+	# Aplicamos el ajuste de volumen
+	player.volume_db = volume
+		
 	add_child(player)
 	player.play()
 	
@@ -42,15 +46,15 @@ func play_sound(stream: AudioStream, pitch_variance: float = 0.0) -> void:
 
 #grab sound
 func play_random_grab_sound() -> void:
-	# Corregido: usamos el arreglo grab_sounds
 	var random_sound: AudioStream = grab_sounds.pick_random()
 	play_sound(random_sound, 0.1)
 
 func play_drop_sound() -> void:
 	play_sound(drop_sound, 0.1)
 
+# Llamamos a la función con 0.0 de pitch y -12.0 de volumen
 func play_button_sound() -> void:
-	play_sound(button_sound)
+	play_sound(button_sound, 0.0, -8.0)
 
 func play_coin_sound() -> void:
 	# Le damos una variación de pitch chiquita para que si agarras muchos billetes seguidos, no suene robótico
