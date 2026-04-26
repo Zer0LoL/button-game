@@ -107,4 +107,4 @@ shape = SubResource("RectangleShape2D_kfawn")
 
 [node name="WalkPlayer" type="AudioStreamPlayer" parent="." unique_id=426565733]
 stream = ExtResource("9_xoi5f")
-volume_db = -10.0
+volume_db = -2.0

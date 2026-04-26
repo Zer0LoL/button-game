@@ -30,6 +30,7 @@ var color_untyped: String = "#1b5e20" #verde oscuro
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicManager.play_typing_music()
 	type_text.bbcode_enabled = true
 	play_intro()
 	

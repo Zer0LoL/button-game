@@ -9,7 +9,7 @@ const ENDING_MUSIC = preload("res://Assets/Audio/Music/krow-end.ogg")
 
 func _ready() -> void:
 	# Nos aseguramos de que el volumen sea adecuado
-	volume_db = -8.0 
+	volume_db = -4.0 
 
 func play_track(new_stream: AudioStream) -> void:
 	if stream == new_stream and playing:
