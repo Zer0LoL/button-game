@@ -146,6 +146,18 @@ func play_choreography() -> void:
 	
 	sfx_walk.stop()
 	music_player.stop()
+	tween_fin.tween_property(fade_negro, "color:a", 1.0, 4.0)
+	await tween_fin.finished
+	
+	print("Subiendo puntuación a Wavedash...")
+	
+	var response = await WavedashSDK.post_leaderboard_score("j97bd0536meawt1xet1dtwbdyn85kbgs", GlobalData.workers_count, true)
+	
+	if response.success:
+		print("¡ÉXITO! Puntuación subida. Rango global: ", response.data.globalRank)
+	else:
+		print("Error al subir puntuación: ", response.message)
+
 	print("FIN. GRACIAS POR JUGAR.")
 
 func _spawn_horde() -> void:
