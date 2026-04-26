@@ -5,7 +5,6 @@ extends Control
 @onready var empleados_label = $Empleados
 @onready var upgrade_button = $UpgradeButton
 
-var time_passed: float = 0.0
 
 func _ready() -> void:
 	if upgrade_button:
@@ -13,21 +12,16 @@ func _ready() -> void:
 	update_ui()
 
 func _process(delta: float) -> void:
-	time_passed += delta
-	if time_passed >= 1.0:
-		# El ingreso pasivo vuelve a ser 1 a 1 normal
-		GlobalData.money += GlobalData.total_empleados
-		time_passed -= 1.0
-		update_ui()
+	update_ui()
 		
 func update_ui() -> void:
 	workers_counter.text = str(GlobalData.workers_count) + "/" + str(GlobalData.workers_max) 
 	money_counter.text = "$" + str(GlobalData.money)
-	empleados_label.text = "EMPLEADOS: " + str(GlobalData.total_empleados)
+	empleados_label.text = "EMPLOYEES: " + str(GlobalData.total_empleados)
 	
 	if GlobalData.upgrade_level < GlobalData.upgrade_costs.size():
 		var next_cost = GlobalData.upgrade_costs[GlobalData.upgrade_level]
-		upgrade_button.text = "MEJORA: $" + str(next_cost / 1000) + "k"
+		upgrade_button.text = "UPGRADE: $" + str(next_cost / 1000) + "k"
 		
 		if GlobalData.money >= next_cost:
 			upgrade_button.disabled = false

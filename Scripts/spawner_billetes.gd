@@ -42,7 +42,7 @@ func spawn_billete() -> void:
 	if randf() < probabilidad_rapido:
 		nuevo_billete.fall_speed = velocidad_rapida
 		nuevo_billete.modulate = Color(1.5, 1.2, 0.5) 
-		# ¡Le decimos al billete que es el especial!
+		# Le decimos al billete que es el especial (cumplido)
 		nuevo_billete.es_rapido = true
 	else:
 		nuevo_billete.fall_speed = velocidad_normal

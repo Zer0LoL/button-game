@@ -12,3 +12,12 @@ var money: int = 0
 # Mejoras
 var upgrade_level: int = 0
 var upgrade_costs: Array[int] = [5000, 10000, 20000]
+var time_passed: float = 0.0
+
+func _process(delta: float) -> void:
+	# Calculamos dinero si hay empleados
+	if total_empleados > 0:
+		time_passed += delta
+		if time_passed >= 1.0:
+			money += total_empleados
+			time_passed -= 1.0

@@ -4,6 +4,7 @@ extends Node2D
 @onready var barra_progreso = $BackgroundLayer/UiProgressBarInterface
 
 func _ready() -> void:
+	MusicManager.play_linea_music()
 	if linea_jugador:
 		linea_jugador.choco_obstaculo.connect(_on_jugador_dano)
 
