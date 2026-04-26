@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://jik47s74mf6p" path="res://Scripts/game_manager.gd" id="1_kln2b"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bcys8yuggfs6g" path="res://Assets/Animations/Raw/Button_Data.tres" id="1_r150o"]
 [ext_resource type="Script" uid="uid://roloc33o2p0u" path="res://Scripts/main_camera.gd" id="2_rgh2o"]
-[ext_resource type="SpineSkeletonDataResource" path="res://Assets/Animations/Raw/TitleLetter_Data.tres" id="5_jw32o"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://g227aux261xo" path="res://Assets/Animations/Raw/TitleLetter_Data.tres" id="5_jw32o"]
 [ext_resource type="PackedScene" uid="uid://dq7o6ro8tcvmy" path="res://Scenes/UI_MoneyInterface.tscn" id="5_pbw6q"]
-[ext_resource type="SpineSkeletonDataResource" path="res://Assets/Animations/Raw/TitleGear_Data.tres" id="6_50glp"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://cwwjwgcfpevs6" path="res://Assets/Animations/Raw/TitleGear_Data.tres" id="6_50glp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r150o"]
 radius = 52.50836
