@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11t2qaok4tqi"
-path="res://.godot/imported/watercolorbasketplaceholder.png-dcf9169d1d6f1613c724330fc8fe7d9e.ctex"
+uid="uid://bly4pbn3bcg0"
+path="res://.godot/imported/Main Load Screen.png-8358caa9cbf6cf385e0055d8412011c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Placeholders/watercolorbasketplaceholder.png"
-dest_files=["res://.godot/imported/watercolorbasketplaceholder.png-dcf9169d1d6f1613c724330fc8fe7d9e.ctex"]
+source_file="res://Main Load Screen.png"
+dest_files=["res://.godot/imported/Main Load Screen.png-8358caa9cbf6cf385e0055d8412011c8.ctex"]
 
 [params]
 
