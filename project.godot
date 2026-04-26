@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Krow Inc."
-run/main_scene="uid://b2qqqafyyk5vx"
+run/main_scene="uid://bgt3xk6m6fpt2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://bidx0hial13u2"
 

@@ -4,13 +4,10 @@ extends Control
 @onready var word1: Label = $UIRect/WordCenter/Word1
 @onready var word2: Label = $UIRect/WordCenter/Word2
 @onready var word3: Label = $UIRect/WordCenter/Word3
-
+@onready var tv_effect = $TV_Effect
 var current_progress: float = 0.0 
 var max_width: float = 0.0 
-
-
 var passive_fill_rate: float = 3.33
-
 var current_words: Array = []
 var phase: int = 0 
 
@@ -70,6 +67,46 @@ func check_phases() -> void:
 	elif current_progress >= 100.0 and phase == 3:
 		phase = 4
 		print("¡Minijuego Completado! Barra llena.")
+		# Llamamos a la transición
+		win_minigame()
+
+func win_minigame() -> void:
+	# Pausa pequeña
+	await get_tree().create_timer(0.5).timeout
+	
+	GlobalData.completed_minigames += 1
+	GlobalData.total_empleados += GlobalData.workers_max
+	
+	if tv_effect:
+		# Quitamos la TV de su padre actual (la barra de progreso)
+		tv_effect.get_parent().remove_child(tv_effect)
+		
+		# Creamos un nuevo nodo CanvasLayer "vengador"
+		var capa_suprema_tv = CanvasLayer.new()
+		
+		# Le damos la prioridad de capa más alta posible (Godot soporta hasta 128)
+		capa_suprema_tv.layer = 125 
+		
+		# Añadimos este nuevo CanvasLayer a la escena actual para que exista
+		get_tree().current_scene.add_child(capa_suprema_tv)
+		
+		# Metemos nuestra TV *dentro* de este CanvasLayer supremo
+		capa_suprema_tv.add_child(tv_effect)
+		
+		# Configuramos la TV normalmente (ya no necesitamos top_level ni z_index)
+		tv_effect.custom_minimum_size = Vector2(1920, 1080)
+		tv_effect.size = Vector2(1920, 1080)
+		tv_effect.position = Vector2.ZERO # Ahora sí, ZERO es la esquina de la pantalla
+		
+		tv_effect.stream = load("res://Assets/Animations/Raw/TV Effect.ogv")
+		tv_effect.show()
+		tv_effect.play()
+		
+		# Esperamos 0.5s para el "corte a negro"
+		await get_tree().create_timer(0.5).timeout
+	
+	# Cambiamos a la escena principal
+	get_tree().change_scene_to_file("res://Scenes/Main.tscn")
 
 func show_word_1() -> void:
 	var tween = create_tween()

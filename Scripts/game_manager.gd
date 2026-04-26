@@ -16,8 +16,13 @@ var spawn_delay_time = 1.0
 var cooldown_time = 1.0    
 
 func _ready():
-	hud.hide() 
-	setup_title_animations()
+	GlobalData.workers_count = 0	
+	if GlobalData.completed_minigames == 0:
+		hud.hide() 
+		setup_title_animations()
+	else:
+		hud.show() 
+		animated_title.hide()
 	
 func setup_title_animations():
 	var letter_k = animated_title.get_child(0)
@@ -72,9 +77,20 @@ func start_alignment_phase():
 	current_state = State.ALIGNMENT
 	print("El jugador debe arrastrar a los trabajadores a las zonas.")
 	
+	if not hud.visible:
+		hud.show()
+	
+	# Calculamos el espacio para que siempre estén centrados, ya sean 4, 6 o 10.
+	var ancho_pantalla = 1920.0
+	var espaciado = ancho_pantalla / (GlobalData.workers_max + 1)
+	
 	for i in range(GlobalData.workers_max):
 		var new_zone = work_zone_scene.instantiate()
-		new_zone.position = Vector2(384 + (i * 384), 950) 
+		
+		# Posición X: Se distribuyen según el espacio calculado
+		# Posición Y: Ajusta el 950 si necesitas que estén más arriba o más abajo
+		new_zone.position = Vector2(espaciado * (i + 1), 950) 
+		
 		game_world.add_child(new_zone)
 		new_zone.show_zone()
 
@@ -183,7 +199,25 @@ func play_tv_transition():
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	get_tree().change_scene_to_file("res://Scenes/MinijuegoTyping.tscn")
+	# Selección de minijuegos
+	var minigames: Array[String] = [
+		"res://Scenes/MinijuegoBasket.tscn",
+		"res://Scenes/MinijuegoLinea.tscn",
+		"res://Scenes/MinijuegoTyping.tscn"
+	]
+	
+	# Si ya jugamos uno antes, lo quitamos de la lista de opciones
+	if GlobalData.last_minigame in minigames:
+		minigames.erase(GlobalData.last_minigame)
+		
+	# Godot elige automáticamente uno al azar de los que quedan en la lista
+	var next_minigame = minigames.pick_random()
+	
+	# Guardamos nuestra elección en el Autoload 
+	GlobalData.last_minigame = next_minigame
+	
+	# Cambiamos a la escena 
+	get_tree().change_scene_to_file(next_minigame)
 	
 func _process(delta: float) -> void:
 	if animated_title.visible:

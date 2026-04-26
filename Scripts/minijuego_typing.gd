@@ -8,7 +8,7 @@ var intro_text: String = "TYPE WITH ME."
 var sentences: Array[String] = [
 	"WORK IS GOOD.",
 	"I LOVE WORKING.",
-	"MONEY MONEY MONEY.",
+	"WORK LIKE MACHINES.",
 	"MAXIMIZE GROWTH.",
 	"BOSS IS THE BEST.",
 	"LOVING THE WORK.",
