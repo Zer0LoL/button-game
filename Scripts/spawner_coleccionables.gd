@@ -63,5 +63,6 @@ func _spawn_obstaculo() -> void:
 	timer_obstaculos.start(randf_range(0.6, 1.4))
 	
 func _on_item_atrapado() -> void:
+	SFXManager.play_coin_sound()
 	if barra_progreso:
 		barra_progreso.add_progress(progreso_por_item)
