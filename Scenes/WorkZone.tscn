@@ -4,7 +4,7 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://3nckjgslwoaw" path="res://Assets/Animations/Raw/Pointer_Data.tres" id="2_ef1i6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_veofy"]
-radius = 33.997555
+radius = 47.99987
 height = 171.99483
 
 [node name="WorkZone" type="Area2D" unique_id=1647229248 groups=["work_zones"]]

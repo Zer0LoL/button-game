@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boduyy4pnbiw3"
+path="res://.godot/imported/sfx uhg 2.wav-fff21454bbf71cfbb4781fd7c4977119.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/sfx uhg 2.wav"
+dest_files=["res://.godot/imported/sfx uhg 2.wav-fff21454bbf71cfbb4781fd7c4977119.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
