@@ -65,7 +65,7 @@ position = Vector2(1811.9999, 111.99997)
 rotation = 0.27576202
 scale = Vector2(1.065, 1.035)
 
-[node name="Promotion" type="RichTextLabel" parent="." unique_id=1133844497]
+[node name="Empleados" type="RichTextLabel" parent="." unique_id=1133844497]
 layout_mode = 0
 offset_left = 1537.0
 offset_top = 199.0
@@ -74,6 +74,15 @@ offset_bottom = 258.0
 theme_override_colors/default_color = Color(0.77, 0.21816668, 0.107799985, 1)
 theme_override_fonts/normal_font = ExtResource("4_gcnyy")
 theme_override_font_sizes/normal_font_size = 46
-text = "PROMOTION: 100M"
+text = "EMPLEADOS: 0"
 scroll_active = false
 horizontal_alignment = 2
+
+[node name="UpgradeButton" type="Button" parent="." unique_id=393330692]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 57.0
+offset_right = 1046.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("4_gcnyy")
+theme_override_font_sizes/font_size = 36
