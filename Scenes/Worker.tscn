@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0bhxs51dafrk" path="res://Assets/Art/Masks/particle effect cigar.png" id="3_s0wpu"]
 [ext_resource type="Texture2D" uid="uid://b4p0xktio3jn3" path="res://Assets/Art/bg name.png" id="6_fomyb"]
 [ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="7_hbmmw"]
-[ext_resource type="Texture2D" uid="uid://11t2qaok4tqi" path="res://Assets/Art/Placeholders/watercolorbasketplaceholder.png" id="8_kfawn"]
+[ext_resource type="Texture2D" uid="uid://dhnkp6hq48b20" path="res://Assets/Art/basket.png" id="8_kfawn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0wpu"]
 shader = ExtResource("2_vwm8u")

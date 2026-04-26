@@ -8,14 +8,10 @@ var tv_effect: VideoStreamPlayer
 var fade_negro: ColorRect
 var fondo_crema: ColorRect
 
-# --- NUEVOS REPRODUCTORES DE AUDIO ---
 var music_player: AudioStreamPlayer
 var sfx_walk: AudioStreamPlayer
 
 func _ready() -> void:
-	# ---------------------------------------------------------
-	# CONFIGURACIÓN DE AUDIO
-	# ---------------------------------------------------------
 	music_player = AudioStreamPlayer.new()
 	music_player.stream = load("res://Assets/Audio/Music/krow-end.ogg")
 	music_player.bus = "Master" # O el bus que prefieras
@@ -25,9 +21,6 @@ func _ready() -> void:
 	sfx_walk.stream = load("res://Assets/Audio/sfx walk.wav")
 	add_child(sfx_walk)
 	
-	# ---------------------------------------------------------
-	# PREPARACIÓN DEL SET
-	# ---------------------------------------------------------
 	fondo_crema = ColorRect.new()
 	fondo_crema.color = Color("e3d3a9")
 	fondo_crema.size = Vector2(20000, 20000)
@@ -67,10 +60,7 @@ func _ready() -> void:
 	play_choreography()
 
 func play_choreography() -> void:
-	# =========================================================
-	# ACTO 1: TV (5s) + INICIO DE MÚSICA
-	# =========================================================
-	music_player.play() # Empieza la música en loop
+	music_player.play() 
 	
 	tv_effect.stream = load("res://Assets/Animations/Raw/TV Effect.ogv")
 	tv_effect.show()
@@ -78,16 +68,10 @@ func play_choreography() -> void:
 	
 	await get_tree().create_timer(5.0).timeout
 	
-	# =========================================================
-	# ACTO 2: Pantalla Negra (2s)
-	# =========================================================
 	tv_effect.hide()
 	tv_effect.stop()
 	await get_tree().create_timer(2.0).timeout
 	
-	# =========================================================
-	# ACTO 3: Deslizamiento revelando al protagonista
-	# =========================================================
 	var centro_x = 960
 	var centro_y = 540
 	main_camera.global_position = Vector2(centro_x, centro_y)
@@ -109,40 +93,28 @@ func play_choreography() -> void:
 	tween_intro.tween_property(fade_negro, "position:x", 1920.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween_intro.finished
 	
-	# =========================================================
-	# ACTO 4: Enfoque (2s)
-	# =========================================================
 	var tween_focus = create_tween().set_parallel(true)
 	tween_focus.tween_property(spine, "scale", Vector2(1.5, 1.5), 1.5).set_trans(Tween.TRANS_SINE)
 	tween_focus.tween_property(spine, "modulate:a", 1.0, 1.5).set_trans(Tween.TRANS_SINE)
 	await tween_focus.finished
 	await get_tree().create_timer(2.0).timeout
 	
-	# =========================================================
-	# ACTO 5: El trabajador se va + SFX caminar
-	# =========================================================
 	spine.scale.x = -1.5 
 	spine.get_animation_state().set_animation("Run/Run", true, 0)
 	
-	sfx_walk.play() # Inicia sonido de pasos
+	sfx_walk.play()
 	
 	var tween_marcha = create_tween()
 	tween_marcha.tween_property(prota, "global_position:x", centro_x + 1200.0, 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween_marcha.finished
 	
-	sfx_walk.stop() # Deja de caminar
+	sfx_walk.stop() 
 	prota.queue_free()
 	
-	# =========================================================
-	# ACTO 6: TV rápida
-	# =========================================================
 	tv_effect.show()
 	tv_effect.play()
 	await get_tree().create_timer(0.4).timeout
 	
-	# =========================================================
-	# ACTO 7 y 8: Botón y Zoom Inmediato
-	# =========================================================
 	tv_effect.hide()
 	tv_effect.stop()
 	false_button.show()
@@ -154,26 +126,20 @@ func play_choreography() -> void:
 	tween_descenso.tween_property(main_camera, "zoom", Vector2(0.2, 0.2), duracion_descenso).set_trans(Tween.TRANS_SINE)
 	tween_descenso.tween_property(main_camera, "global_position:y", false_button.global_position.y + 2500.0, duracion_descenso).set_trans(Tween.TRANS_SINE)
 	
-	# =========================================================
-	# ACTO 9: Horda masiva + SFX caminar continuo
-	# =========================================================
+
 	await get_tree().create_timer(5.0).timeout
 	
-	sfx_walk.play() # Los pasos de la horda se mantienen hasta el fin
+	sfx_walk.play() 
 	_spawn_horde()
 	
 	await get_tree().create_timer(15.0).timeout
 	
-	# =========================================================
-	# ACTO 10: Fin + FADE OUT MÚSICA
-	# =========================================================
+
 	fade_negro.position = Vector2.ZERO
 	fade_negro.color.a = 0.0
 	
 	var tween_fin = create_tween().set_parallel(true)
-	# Fade a negro de la pantalla
 	tween_fin.tween_property(fade_negro, "color:a", 1.0, 4.0)
-	# Fade out de la música bajando el volumen a -80dB (silencio)
 	tween_fin.tween_property(music_player, "volume_db", -80.0, 4.0)
 	
 	await tween_fin.finished

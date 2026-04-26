@@ -6,13 +6,16 @@ extends Node2D
 var intro_text: String = "TYPE WITH ME."
 
 var sentences: Array[String] = [
-	"WORK IS GOOD.",
-	"I LOVE WORKING.",
-	"WORK LIKE MACHINES.",
-	"MAXIMIZE GROWTH.",
-	"BOSS IS THE BEST.",
-	"LOVING THE WORK.",
-	"ONLY THE BEST."
+	"BECOME THE MACHINE.",
+	"JUST ANOTHER COG.",
+	"BODIES ARE TOOLS.",
+	"WE ARE THE ENGINE.",
+	"FLESH AND STEEL.",
+	"REPEAT THE CYCLE.",
+	"PRODUCE OR PERISH.",
+	"HUMAN MACHINERY.",
+	"NO TIME TO REST.",
+	"FUNCTION NOT FEELING."
 ]
 
 var current_sentence: String = ""
