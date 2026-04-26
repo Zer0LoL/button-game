@@ -8,6 +8,7 @@ extends Area2D
 @onready var cigar_smoke = $WorkerVisual/SpineBoneNode/CigarSmoke
 @onready var name_tag = $NameTag
 @onready var name_label = $NameTag/NameLabel
+@onready var walk_player = $WalkPlayer
 
 var worker_name: String = "???"
 var is_dragging = false
@@ -16,9 +17,9 @@ var target_position = Vector2.ZERO
 var is_moving = false
 var speed = 100.0
 var can_be_dragged = false 
-
-
 var current_anim: String = "" 
+
+var step_timer: float = 0.8
 
 func _ready():
 	add_child(timer)
@@ -52,10 +53,14 @@ func _on_mouse_exited():
 	name_tag.hide()
 
 func _input_event(viewport, event, shape_idx):
-	if is_basket_mode: return # Bloqueamos el clic en el minijuego
+	if is_basket_mode: return
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and can_be_dragged:
 		if event.pressed:
+			
+			# --- NUEVO: Sonido al Agarrar ---
+			SFXManager.play_random_grab_sound()
+			
 			is_dragging = true
 			is_moving = false
 			timer.stop()
@@ -70,7 +75,11 @@ func _input_event(viewport, event, shape_idx):
 func _input(event):
 	if is_basket_mode: return 
 	if is_dragging and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-		is_dragging = false # ¡Lo soltamos!
+		
+		# --- NUEVO: Sonido al Soltar ---
+		SFXManager.play_drop_sound()
+		
+		is_dragging = false 
 		
 		for zone in get_tree().get_nodes_in_group("work_zones"):
 			zone.toggle_pointer(false)
@@ -98,18 +107,22 @@ func _input(event):
 func _process(delta):
 	if is_basket_mode:
 		var mouse_x: float = get_global_mouse_position().x
-		
 		mouse_x = clamp(mouse_x, 100.0, 1820.0) 
-		
 		global_position.x = lerp(global_position.x, mouse_x, drag_speed * delta)
 		
 		var distance: float = mouse_x - global_position.x
 		
-		if abs(distance) > 5.0:
+		# Aumentamos la tolerancia a 15.0 para que corte el sonido mucho antes
+		if abs(distance) > 15.0:
 			_play_spine_anim("Run/Run")
 			spine_sprite.scale.x = -1 if distance < 0 else 1
+			
+			# Si el audio no está sonando ya, le damos play (evita empalmar sonidos)
+			if not walk_player.playing:
+				walk_player.play()
 		else:
 			_play_spine_anim("IDLE")
+			walk_player.stop() # ¡Silencio absoluto e inmediato al frenar!
 			
 		return 
 
@@ -124,9 +137,12 @@ func _process(delta):
 		spine_sprite.rotation = lerp(spine_sprite.rotation, 0.0, 5.0 * delta)
 		position = position.move_toward(target_position, speed * delta)
 		
+		if not walk_player.playing: walk_player.play()
+		
 		if position.distance_to(target_position) < 5.0:
 			is_moving = false
 			_play_spine_anim("IDLE")
+			walk_player.stop() # Silencio al llegar a su zona
 			_start_idle()
 	else:
 		spine_sprite.rotation = lerp(spine_sprite.rotation, 0.0, 5.0 * delta)
@@ -175,6 +191,10 @@ func _on_timer_timeout():
 
 func _on_basket_area_entered(area: Area2D) -> void:
 	if area.is_in_group("billetes"):
+		
+		# Sonido al atrapar billete 
+		SFXManager.play_coin_sound()
+		
 		_bounce_basket()
 
 func _bounce_basket() -> void:

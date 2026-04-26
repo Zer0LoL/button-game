@@ -16,6 +16,7 @@ var spawn_delay_time = 1.0
 var cooldown_time = 1.0    
 
 func _ready():
+	MusicManager.play_main_music()
 	GlobalData.workers_count = 0	
 	if GlobalData.completed_minigames == 0:
 		hud.hide() 
@@ -54,7 +55,7 @@ func _force_skin(spine_node, skin_name):
 
 func button_clicked():
 	if current_state != State.PROLOGUE: return
-	
+	SFXManager.play_button_sound()
 	if GlobalData.workers_count == 0:
 		animated_title.hide()
 		await get_tree().create_timer(2.0).timeout
@@ -127,6 +128,7 @@ func spawn_worker():
 func _on_worker_landed(worker):
 	if GlobalData.workers_count == 1:
 		main_camera.apply_shake(20.0) 
+		SFXManager.play_bam_sound()
 	else:
 		main_camera.apply_shake(2.0)  
 
@@ -164,6 +166,7 @@ func start_cinematic_transition():
 	play_ok_and_exit()
 
 func play_ok_and_exit():
+	SFXManager.play_like_sound()
 	for worker in get_tree().get_nodes_in_group("workers"):
 		var ok_anim = SpineSprite.new() 
 		ok_anim.skeleton_data_res = load("res://Assets/Animations/Raw/OK_Data.tres")

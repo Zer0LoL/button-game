@@ -20,6 +20,7 @@ config/icon="uid://bidx0hial13u2"
 WavedashSDK="*uid://dbg2ujud3howm"
 SFXManager="*uid://8a64ojrgts87"
 GlobalData="*uid://btv0uoi844mnu"
+MusicManager="*uid://b8y6800uxme2e"
 
 [display]
 

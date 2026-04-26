@@ -4,7 +4,7 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cfkha74t4c6ak" path="res://Assets/Animations/Raw/TitleGear.tres" id="1_bgx85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgx85"]
-radius = 52.03845
+radius = 73.061615
 
 [node name="Coleccionable" type="Area2D" unique_id=575305100]
 z_index = 10

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bnc46lqtmqx38"
+path="res://.godot/imported/like sound.ogg-d6ad2df4acfd77cbe42b545af7024fcb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/like sound.ogg"
+dest_files=["res://.godot/imported/like sound.ogg-d6ad2df4acfd77cbe42b545af7024fcb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

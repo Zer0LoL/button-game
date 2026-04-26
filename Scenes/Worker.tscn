@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://ch2l38llbi7l3" path="res://Scripts/worker.gd" id="1_77nw7"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://1fievr8rakct" path="res://Assets/Animations/Raw/NPC_Data.tres" id="1_r72bl"]
 [ext_resource type="Texture2D" uid="uid://cnj71si7y6dst" path="res://Assets/Art/Masks/mask shadow.png" id="2_2jbub"]
-[ext_resource type="Shader" uid="uid://c6xcdpuclxtmi" path="res://Scripts/Worker.gdshader" id="2_vwm8u"]
+[ext_resource type="Shader" path="res://Scripts/Worker.gdshader" id="2_vwm8u"]
 [ext_resource type="Texture2D" uid="uid://d0bhxs51dafrk" path="res://Assets/Art/Masks/particle effect cigar.png" id="3_s0wpu"]
 [ext_resource type="Texture2D" uid="uid://b4p0xktio3jn3" path="res://Assets/Art/bg name.png" id="6_fomyb"]
 [ext_resource type="FontFile" uid="uid://bs11hcns17p5q" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="7_hbmmw"]
-[ext_resource type="Texture2D" uid="uid://dhnkp6hq48b20" path="res://Assets/Art/basket.png" id="8_kfawn"]
+[ext_resource type="Texture2D" uid="uid://11t2qaok4tqi" path="res://Assets/Art/Placeholders/watercolorbasketplaceholder.png" id="8_kfawn"]
+[ext_resource type="AudioStream" uid="uid://cc7oqya4door4" path="res://Assets/Audio/sfx walk.wav" id="9_xoi5f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0wpu"]
 shader = ExtResource("2_vwm8u")
@@ -103,3 +104,7 @@ texture = ExtResource("8_kfawn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/Area2D" unique_id=695877337]
 position = Vector2(-16.393442, 58.2377)
 shape = SubResource("RectangleShape2D_kfawn")
+
+[node name="WalkPlayer" type="AudioStreamPlayer" parent="." unique_id=426565733]
+stream = ExtResource("9_xoi5f")
+volume_db = -10.0
