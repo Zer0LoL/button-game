@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://55na41sj6gig"]
 
 [ext_resource type="PackedScene" uid="uid://cqc3rgabko8tr" path="res://Scenes/UI_ProgressBarInterface.tscn" id="1_0gn0v"]
+[ext_resource type="Script" uid="uid://084srja63nmi" path="res://Scripts/minijuego_linea.gd" id="1_i4b7q"]
+[ext_resource type="Script" uid="uid://b1kjym5urjx1v" path="res://Scripts/grid_fondo.gd" id="1_uj3v8"]
 [ext_resource type="PackedScene" uid="uid://dtwj37rguys34" path="res://Scenes/LineaJugador.tscn" id="2_ymbrc"]
 [ext_resource type="Script" uid="uid://bcis5taq1ar7d" path="res://Scripts/spawner_coleccionables.gd" id="3_ymbrc"]
 [ext_resource type="PackedScene" uid="uid://dvmx8i06a1xge" path="res://Scenes/Coleccionable.tscn" id="4_tgoqr"]
+[ext_resource type="PackedScene" uid="uid://cnkvtnexkxnxy" path="res://Scenes/ObstaculoLinea.tscn" id="7_runnv"]
 
 [node name="MinijuegoLinea" type="Node2D" unique_id=877701072]
+script = ExtResource("1_i4b7q")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=843200150]
 layer = -1
@@ -19,18 +23,20 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.8901961, 0.827451, 0.6627451, 1)
 
+[node name="GridFondo" type="Node2D" parent="BackgroundLayer" unique_id=1598041349]
+script = ExtResource("1_uj3v8")
+
 [node name="UiProgressBarInterface" parent="BackgroundLayer" unique_id=1244246556 instance=ExtResource("1_0gn0v")]
 
 [node name="LineaJugador" parent="." unique_id=242914012 instance=ExtResource("2_ymbrc")]
 limite_inferior = 750.0
 
 [node name="SpawnerColeccionables" type="Node2D" parent="." unique_id=390389260 node_paths=PackedStringArray("barra_progreso", "linea_jugador")]
-position = Vector2(962, 539)
 script = ExtResource("3_ymbrc")
 escena_coleccionable = ExtResource("4_tgoqr")
 barra_progreso = NodePath("../BackgroundLayer/UiProgressBarInterface")
 linea_jugador = NodePath("../LineaJugador")
-limite_inferior = 450.0
+escena_obstaculo = ExtResource("7_runnv")
 
 [node name="Timer" type="Timer" parent="SpawnerColeccionables" unique_id=1454394437]
 autostart = true
