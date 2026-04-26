@@ -16,3 +16,7 @@ shape = SubResource("RectangleShape2D_voj4k")
 default_color = Color(0.6745098, 0.24313726, 0.15294118, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1127896492]
+
+[node name="FlechaVisual" type="Polygon2D" parent="." unique_id=1718107936]
+scale = Vector2(1, 0.5)
+color = Color(0.6745098, 0.24313726, 0.15294118, 1)
